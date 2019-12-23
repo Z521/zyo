@@ -1,0 +1,164 @@
+.wo {
+    width: 98vw;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.woo>img {
+    width: 15vw;
+    border-radius: 50%;
+}
+
+.wo2 {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    padding-left: 15%;
+}
+
+.wo3 {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+
+.wo3 img {
+    width: 5vw;
+    vertical-align: middle;
+}
+
+.wo3 span {
+    padding-top: 1%;
+    padding-left: 1%;
+}
+
+.yannn {
+    height: 0.5vh;
+    background-color: rgba(246, 247, 249, 1);
+}
+
+.wo4 {
+    margin-left: 65%;
+}
+
+.yannn1 {
+    height: 2vh;
+    background-color: rgba(246, 247, 249, 1);
+}
+
+.wo5 {
+    padding: 4% 0 0 2%;
+    color: rgba(0, 0, 0, 1);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.wo6 {
+    width: 100%;
+    height: 40vh;
+    overflow-x: scroll;
+    overflow: none;
+}
+
+.wo7 img {
+    width: 37vw;
+    padding-right: 5vw;
+}
+
+.wo7 {
+    display: flex;
+}
+
+.wo7 div div {
+    padding-top: 1%;
+    text-align: center;
+}
+
+.yannn2 {
+    height: 1vh;
+    background-color: rgba(246, 247, 249, 1);
+}
+
+.wo10 {
+    display: flex;
+    align-items: center;
+    height: 10vh;
+}
+
+.wo10 span {
+    color: rgba(0, 0, 0, 1);
+    font-weight: bold;
+}
+
+.wo10 img {
+    margin-left: 75%;
+    width: 5vw;
+    vertical-align: middle;
+}
+
+.yannn3 {
+    height: 2vh;
+    background-color: rgba(246, 247, 249, 1);
+}
+
+.wo11 {
+    display: flex;
+    align-items: center;
+    height: 10vh;
+    padding-bottom: 20%;
+}
+
+.wo11 div {
+    color: rgba(0, 0, 0, 1);
+    font-weight: bold;
+}
+
+.kan {
+    height: 98vh;
+    width: 98vw;
+    
+}
+
+.kan1 {
+    
+    display: flex;
+}
+
+.kan1 img {
+    width: 5vw;
+}
+.kan1 div:nth-child(1) {
+    flex: 1;
+}
+.kan1 div:nth-child(2) {
+    text-align: center;
+    flex: 8;
+}
+.kan1 div:nth-child(3) {
+    flex: 2;
+    text-align: right;
+}
+.kan2{
+    padding-top: 5vh;
+    width:  98vw;
+    display: flex;
+}
+.kan3{
+    width: 40%;
+    padding-right: 3vw;
+}
+.kan4 div{
+   
+   height: 50%;
+}
+.kan4 div:nth-child(1) {
+    line-height: 6vh;
+}
+.kan5{
+    padding: 2vh 0 ;
+    background-color: rgba(255, 255, 255, 1);
+	text-align: center;
+}

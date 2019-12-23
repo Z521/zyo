@@ -1,0 +1,192 @@
+.top {
+    width: 100%;
+    height: 3%;
+    overflow-x: scroll;
+    overflow: none;
+}
+
+.top1 {
+    width: 250%;
+}
+
+.top1 span {
+    text-align: center;
+    margin: 5px 8px;
+    font-size: 15px;
+}
+
+.top1 .wang {
+    font-size: 15px;
+    color: rgba(255, 141, 26, 1);
+}
+
+.shipin11 {
+    width: 100%;
+    height: 35vh;
+    position: relative;
+    margin-top: 2%;
+}
+
+.shipin112 {
+    width: 100%;
+    height: 35vh;
+}
+
+.shipin112 img {
+    width: 100%;
+    height: 100%;
+}
+
+.zhang {
+    width: 80%;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 1);
+    font-weight: bold;
+    padding: 3% 0 0 0;
+    position: absolute;
+    left: 10%;
+    top: 5%;
+}
+
+.peng {
+    width: 100%;
+    height: 5vh;
+}
+
+.peng span {
+    display: inline-block;
+    width: 20%;
+    height: 4vh;
+    margin-left: 8%;
+    line-height: 150%;
+    text-align: center;
+    margin-bottom: 5%;
+    color: rgba(128, 128, 128, 1);
+    background-color: rgba(88, 88, 88, 0.1);
+    border-radius: 20%;
+}
+
+.peng .shipinn {
+    width: 10%;
+    height: 90%;
+    border-radius: 50%;
+    position: relative;
+    top: 25%;
+    left: 5%;
+}
+
+.shipin113 {
+    width: 8%;
+    height: 70%;
+    position: relative;
+    top: 20%;
+}
+
+.duan2 {
+    width: 6%;
+    height: 70%;
+    position: relative;
+    top: 20%;
+}
+
+.top3 {
+    padding-bottom: 30%;
+}
+
+.zongyi {
+    display: flex;
+}
+
+.zongyi>div {
+    color: rgba(0, 0, 0, 1);
+    font-size: 16px;
+    width: 20%;
+    text-align: left;
+    font-weight: bold;
+    padding-bottom: 2%;
+}
+
+.zongyi>div:nth-child(1) {
+    color: rgba(255, 141, 26, 1);
+}
+
+.zongyi1 {
+    display: flex;
+    padding-bottom: 2%;
+}
+
+.zongyi1>div {
+    width: 20%;
+    color: rgba(128, 128, 128, 1);
+    background-color: rgba(210, 210, 210, 0.2);
+    border-radius: 5%;
+    font-size: 14px;
+    line-height: 150%;
+    text-align: center;
+}
+
+.zongyi2 {
+    margin-left: 5%;
+}
+
+.zongyiimg {
+    width: 20px;
+    height: 5%;
+}
+
+.zongyi4 {
+    width: 98vw;
+}
+
+.zongyi5 {
+    color: rgba(0, 0, 0, 1);
+    font-size: 14px;
+    text-align: left;
+    font-weight: bold;
+    padding: 2% 0 2% 2%;
+}
+
+.zongyi6 {
+    font-size: 18px;
+    line-height: 150%;
+    text-align: left;
+    font-weight: bold;
+    padding: 5% 0 2% 1%;
+}
+
+.zongyi7 {
+    width: 48vw;
+}
+
+.zongyi8 {
+    padding-right: 0.5%;
+}
+
+.zongyi9,
+.zongyi10 {
+    display: flex;
+}
+
+.zongyi10>div {
+    flex: 1;
+    color: rgba(166, 166, 166, 1);
+    font-size: 12px;
+    line-height: 150%;
+    text-align: left;
+}
+
+.zongyi9>div {
+    flex: 1;
+    color: rgba(0, 0, 0, 1);
+    font-size: 14px;
+    line-height: 150%;
+    text-align: left;
+}
+
+.zongyi9>div:nth-child(2) {
+    padding-left: 4%;
+}
+
+.zongyi10>div:nth-child(2) {
+    padding-left: 4%;
+}
