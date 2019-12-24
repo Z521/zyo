@@ -116,9 +116,10 @@
     font-weight: bold;
 }
 
-.kan {
+.kan{
     height: 98vh;
     width: 98vw;
+    display: none;
     
 }
 
@@ -161,4 +162,133 @@
     padding: 2vh 0 ;
     background-color: rgba(255, 255, 255, 1);
 	text-align: center;
+}
+.sou {
+    height: 98vh;
+    width: 98vw;
+    
+}
+.sousuo1{
+    margin-left:  5vw;
+    width: 70vw;
+    background-color: rgba(63, 62, 62, 0.1);
+    border-radius: 5vw;
+    display: inline-block;
+}
+.sousuo1 img{
+    padding-left: 3vw;
+    width: 8vw;
+    height: 6vh;
+    vertical-align: middle;
+    
+}
+.sousuo1 input{
+    width: 50vw;
+    height: 4vh;
+    color: rgb(95, 95, 95);
+	font-size: 14px;
+
+}
+.sousuo2{
+    display: inline-block;
+    margin-left: 10vw;
+    color: rgba(255, 141, 26, 1);
+	font-size: 14px;
+	
+	text-align: left;
+
+}
+.sousuo3{
+    padding: 3vh 0;
+    /* display: flex; */
+}
+.sousuo3 img{
+    
+    margin-left: 65vw;
+    width: 5vw;
+    vertical-align: middle;
+}
+
+.sousuo3 div{
+   
+    display: inline-block;
+    margin-left: 5vw;
+    vertical-align: middle;
+}
+.souo{
+    margin-left: 3%;
+}
+.sousuo4{
+    width: 30vw;
+   padding: 3% 7%;
+   margin:3% 0 5% 15% ;
+    text-align: center;
+    border-radius: 13%;
+    background-color: rgba(63, 62, 62, 0.1);
+ 
+}
+.sousuo6 {
+    padding: 7% 0 0 0 ;
+    display: flex;
+    /* display: inline-block; */
+
+}
+.sousuo6 div:nth-child(1) {
+   margin: 0  4% 0 3%;
+}
+.sousuo6 div:nth-child(2) {
+    width: 60vw;
+ }
+.sousuo6 .sousuo7{
+    position: relative;
+    right: -15%;
+    width: 5vw;
+}
+.sousuo6 .sousuo7 img{
+    width: 5vw;
+}
+.sousuo8 {
+    width: 5vw;
+    height: 5vw;
+    color: rgba(255, 255, 255, 1);
+	background-color: rgba(212, 48, 48, 1);
+	border-radius: 2px;
+	font-size: 12px;
+	line-height: 150%;
+	text-align: center;
+    /* flex: 1; */
+}
+.sousuo9{
+    width: 5vw;
+    height: 5vw;
+    color: rgba(255, 255, 255, 1);
+	background-color: rgba(255, 141, 26, 1);
+	border-radius: 2px;
+	font-size: 12px;
+	line-height: 150%;
+	text-align: center;
+
+}
+.sousuo100{
+    width: 5vw;
+    height: 5vw;
+    color: rgba(255, 255, 255, 1);
+	background-color: rgba(255, 235, 59, 1);
+	border-radius: 2px;
+	font-size: 12px;
+	line-height: 150%;
+	text-align: center;
+
+}
+
+.sousuo10{
+        width: 5vw;
+        height: 5vw;
+        color: rgba(255, 255, 255, 1);
+        background-color: rgba(166, 166, 166, 1);
+        border-radius: 2px;
+        font-size: 12px;
+        line-height: 150%;
+        text-align: center;
+    
 }

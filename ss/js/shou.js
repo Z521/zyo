@@ -249,7 +249,93 @@ $(".wo3 img").css({
 
 $(".top3").append($(jiemian2))
 
+var  woooo = [
+    {
+    img: "./images/我的/111/图片 217.jpeg",
+    wenzi: " 沙海",
+    imgi: "更新至10集/全54集"
+
+    },
+    {
+        img: "./images/我的/111/图片 217.jpeg",
+        wenzi: " 沙海",
+        imgi: "更新至10集/全54集"
+    
+    },
+    {
+        img: "./images/我的/111/图片 217.jpeg",
+        wenzi: " 沙海",
+        imgi: "更新至10集/全54集"
+        
+        },
+        {
+            img: "./images/我的/111/图片 217.jpeg",
+            wenzi: " 沙海",
+            imgi: "更新至10集/全54集"
+            
+        },
+        {
+            img: "./images/我的/111/图片 217.jpeg",
+            wenzi: " 沙海",
+            imgi: "更新至10集/全54集"
+                
+        },
+        {
+            img: "./images/我的/111/图片 217.jpeg",
+            wenzi: " 沙海",
+            imgi: "更新至10集/全54集"
+                
+        },
+        {
+            img: "./images/我的/111/图片 217.jpeg",
+            wenzi: " 沙海",
+            imgi: "更新至10集/全54集"
+                
+        },
+        {
+            img: "./images/我的/111/图片 217.jpeg",
+            wenzi: " 沙海",
+            imgi: "更新至10集/全54集"
+                
+        },
+        {
+            img: "./images/我的/111/图片 217.jpeg",
+            wenzi: " 沙海",
+            imgi: "更新至10集/全54集"
+                
+        }
+]
+
+var wode = ""
+for (var  j = 0; j < woooo.length; j++) {
+    var wejs = woooo[j]
+    wode += `
+     <div class="kan2">
+    <img  class="kan3" src="`+wejs.img+`" alt="">
+    <div class="kan4">
+        <div>`+wejs.wenzi+`</div>
+        <div> `+wejs.imgi+`</div>
+    </div>
+</div> 
+
+    `
+    
+}
+
+var woo = ""
+woo  +=`
+<div class="kan5"> 编辑</div>
+` 
+
+$(".kan").append($(wode))
+$(".kan").append($(woo))
 
 $(".kan3").css({
     "height": $(".kan3").width() * 74 / 130 + "px"
+})
+$(".xhiang3").css({
+    "height": $(".xhiang3").width() * 210 / 375 + "px"
+})
+$(".xhiang5").css({
+    "height": screen_h - $(".xhiang").outerHeight() + "px"
 })
