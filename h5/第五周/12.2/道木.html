@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 493px;
+            font-size: 30px;
+            margin: 0 auto;
+            border: 0.2px solid rgb(22, 22, 22);
+        }
+
+        .shang {
+            width: 100%;
+            height: 133px;
+            /* background-color: rgb(141, 141, 141); */
+            position: relative;
+            border: 0.2px solid rgb(22, 22, 22);
+        }
+
+        .xia {
+            width: 100%;
+            height: 360px;
+            /* background-color: darkolivegreen; */
+
+        }
+
+        .kuai {
+            width: 25%;
+            height: 20%;
+            /* background-color: darkolivegreen; */
+            border: 0.2px solid rgb(22, 22, 22);
+            float: left;
+            text-align: center;
+            line-height: 75px;
+            box-sizing: border-box;
+        }
+
+        .span {
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+
+        }
+
+        .da {
+            width: 50%;
+            height: 20%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="shang"> <span class="span">0</span></div>
+        <div class="xia">
+            <div type="c" class="kuai">c</div>
+            <div type="c" class="kuai">+/-</div>
+            <div type="c" class="kuai">%</div>
+            <div type="c" class="kuai yunsuan">÷</div>
+            <div type="n" class="kuai">1</div>
+            <div type="n" class="kuai">2</div>
+            <div type="n" class="kuai">3</div>
+            <div type="c" class="kuai yunsuan">×</div>
+            <div type="n" class="kuai">4</div>
+            <div type="n" class="kuai">5</div>
+            <div type="n" class="kuai">6</div>
+            <div type="c" class="kuai yunsuan">-</div>
+            <div type="n" class="kuai">7</div>
+            <div type="n" class="kuai">8</div>
+            <div type="n" class="kuai">9</div>
+            <div type="c" class="kuai yunsuan">+</div>
+            <div type="n" class="kuai da">0</div>
+            <div type="c" class="kuai">.</div>
+            <div type="c" class="kuai yunsuan eq">=</div>
+        </div>
+    </div>
+    <!-- <div class="da">
+
+        <input type="text" class="kuang1">
+        <span>+</span>
+        <input type="text" class="kuang2">
+        <button class="deng">=</button>
+        <input type="text" class="kuang3">
+    </div> -->
+</body>
+<!-- <script>
+    var kuang1 = document.getElementsByClassName("kuang1")[0]
+    var kuang2 = document.getElementsByClassName("kuang2")[0]
+    var but    = document.getElementsByClassName("deng")[0]
+    var zhi    = document.getElementsByClassName("kuang3")[0]
+    but.onclick = function () {
+        zhi.value = (kuang1.value - 0) + (kuang2.value - 0)
+    }
+
+</script> -->
+<script>
+    var cao_status = "aaa"
+    var first_num = ""
+    var second_num = ""
+    var my_text = document.querySelector(".span")
+    var kuais = document.querySelectorAll(".kuai")
+    for (var i = 0; i < kuais.length; i++) {
+        kuais[i].onclick = function () {
+            var btn_type = this.getAttribute("type")
+            var value = this.innerText
+            if (btn_type == "c") {
+                console.log("操作按钮")
+                if (value == "c") {
+                    my_text.innerText = "0"
+                } else if (value == "+" || value == "-" || value == "×" || value == "÷") {
+                    cao_status = value
+                    document.querySelector(".eq").setAttribute("yunsuan", value)
+                    first_num = my_text.innerText
+                } else if (value == "=") {
+                    second_num = my_text.innerText
+                    var yunsuan = document.querySelector(".eq").getAttribute("yunsuan")
+                    var jieguo = 0
+                    if (yunsuan == "+") {
+                        jieguo = (first_num - 0) + (second_num - 0)
+                    } else if (yunsuan == "-") {
+                        jieguo = (first_num - 0) - (second_num - 0)
+                    } else if (yunsuan == "×") {
+                        jieguo = (first_num - 0) * (second_num - 0)
+                    } else if (yunsuan == "÷") {
+                        jieguo = (first_num - 0) / (second_num - 0)
+                    }
+                    my_text.innerText = jieguo
+                }
+            } else if (btn_type == "n") {
+                console.log("数字按钮");
+                if (cao_status != "aaa") {
+                    my_text.innerText = ""
+                    cao_status = "aaa"
+                } if (my_text.innerText == 0) {
+                    my_text.innerText = ""
+                }
+                my_text.innerText += value
+            }
+        }
+    }
+
+
+</script>
+
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .jiemian{
+            width: 98vw;
+            height: 98vh;
+            margin: 0 auto;
+            background-color: #111;
+            border: 1px solid gold;
+            position: relative;
+        }
+        
+        .feiji , .zidan{
+            position: absolute;
+            background-size: cover;
+            background-image: url(./飞机11.png);
+            
+        }
+        /* // 14.5 在样式表中 增加 子弹样式 */
+        .zidan{
+            background-color: white;
+            border-top-left-radius: 50%;
+            border-top-right-radius: 50%;
+            width: 4px;
+            height: 20px;
+            border-width: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="jiemian"></div>
+</body>
+<script>
+    // 5. 获取界面，随便获取界面的宽和高
+    var jie_mian = document.querySelector(".jiemian")
+    var jie_mian_w = jie_mian.clientWidth
+    var jie_mian_h = jie_mian.clientHeight
+
+    // 1. 准备飞机构造函数
+    function Feiji(){
+        // 6. 创建div来让界面方便绘制
+        this.yuan_su = document.createElement("div")
+
+        // 7. 准备一些样式属性， 方便绘制
+        // this.wei_zhi = {x:0 , y:0}
+        this.da_xiao = {w:100 , h:100}
+
+        // 12. 飞机生出的位置不对， 修改第7步中的x y
+        // 以至于 让飞机出生在 屏幕 底部 并且居中
+        // var x = 屏幕.width/2 - 飞机.width/2
+        // var y = 屏幕.height - 飞机的.height
+        var x = jie_mian_w/2 - this.da_xiao.w/2
+        var y = jie_mian_h - this.da_xiao.h
+        this.wei_zhi = {x:x , y:y}
+
+        // 13.9 给飞机增加一个是否按下去的状态属性
+        this.is_an = false
+        // 13.10 去move函数中看代码
+
+        // 由 13.14 步引过来的
+        this.speed = 3
+
+        // 14.10 增加 zi_dan_jia 属性
+        this.zi_dan_jia = []
+        // 14.11 当子弹生成的那一瞬间， 将子弹 装进 子弹夹中
+        
+        // 11. 给 飞机 的元素 增加 类名 ， 
+        // 这样 该元素就可以使用 css 中的样式
+        this.yuan_su.className = "feiji"
+
+        // 4. 给构造函数中增加 draw 方法
+        this.draw = function () {
+            // 8. 绘制 this.yuan_su 到界面上
+            jie_mian.appendChild(this.yuan_su)
+            // 9. 增加一些样式属性， 方便看到
+            this.yuan_su.style.width = this.da_xiao.w + "px"
+            this.yuan_su.style.height = this.da_xiao.h + "px"
+            this.yuan_su.style.left = this.wei_zhi.x + "px"
+            this.yuan_su.style.top = this.wei_zhi.y + "px"
+            // 10. 在 css 中 写死 一些样式， 方便查看
+        }
+
+        // 13.2 给该构造函数增加move方法
+        this.move = function () {
+            // 13.10 按下去 就 move
+            // 不按下去 就 不 move
+            // 去 下边看 13.11 的代码
+            if (this.is_an) {
+                // 13.14 让move的代码真正实现起来
+                // 根据方向 决定 x 和 y 的值的变化
+                if (this.fang_xiang == "up") {
+                    this.wei_zhi.y = this.wei_zhi.y - this.speed
+                    // 到此 发现没有速度 speed
+                    // 要记得写完之后， 给 构造函数增加一个 speed
+                } else if (this.fang_xiang == "down") {
+                    this.wei_zhi.y = this.wei_zhi.y + this.speed
+                } else if (this.fang_xiang == "left") {
+                    this.wei_zhi.x = this.wei_zhi.x - this.speed
+                } else if (this.fang_xiang == "right") {
+                    this.wei_zhi.x = this.wei_zhi.x + this.speed
+                }
+
+                // 13.15 将变化后的 x y， 
+                // 重新覆盖到 飞机的 样式身上就行
+                this.yuan_su.style.left = this.wei_zhi.x + "px"
+                this.yuan_su.style.top = this.wei_zhi.y + "px"
+            }
+        }
+        
+        // 14.2 给该构造函数增加 fa_she 方法
+        this.fa_she = function () {
+            // 14.3 创建一颗子弹 并 绑定 class
+            var one_zidan = document.createElement("div")
+            one_zidan.className = "zidan"
+            // 14.11 当子弹生成的那一瞬间， 将子弹 装进 子弹夹中
+            this.zi_dan_jia.push(one_zidan)
+
+            // 14.4 让该子弹显示到界面上
+            jie_mian.appendChild(one_zidan)
+
+            // 14.5 在样式表中 增加 子弹样式
+
+            // 14.6 给该子弹 找位置
+            // 子弹的x： 飞机的左边 + 飞机宽度的一半 - 子弹宽度的一半
+            // 子弹的y： 飞机的y - 子弹的高度
+            one_zidan.x = this.wei_zhi.x + this.da_xiao.w/2 - 4/2
+            one_zidan.y = this.wei_zhi.y - 20
+            one_zidan.style.left = one_zidan.x + "px"
+            one_zidan.style.top = one_zidan.y + "px"
+
+            // 14.7 让子弹飞
+            // one_zidan.move()
+            // 此时， 发现 one_zidan.move() 只走一次
+            // 因为 按一下 j 该代码才会走一次
+            // 所以 把 one_zidan.move() 交给定时就就能一直动了
+
+            one_zidan.speed = 6
+
+            // 14.12 给子弹增加move方法
+            one_zidan.move = function (xia_biao) {
+                // 14.13 实现子弹移动的方法
+                this.y = this.y - this.speed
+                // 别忘了 该子弹增加 speed 属性
+                this.style.top = this.y + "px"
+
+                
+                // 14.14 让子弹进行死亡
+                // 14.14.1 子弹超出屏幕 死亡
+                // 14.14.2 子弹碰到敌人 死亡
+
+                // 14.14.1 子弹超出屏幕 死亡
+                if (this.y < -20) {
+                    // 从屏幕上移除
+                    this.remove()
+                    // 从子弹夹中移除
+                    ying_xiong.zi_dan_jia.splice(xia_biao , 1)
+                    // 为了得到当前子弹的下标
+                    // 让子弹在定时器中调用move方法的时候，
+                    // 穿过来一个下标
+                }
+            }
+
+        }
+    }
+
+    // 2. 创建一个ying_xiong飞机
+    var ying_xiong = new Feiji()
+
+    // 3. 把 ying_xiong 绘制到界面上
+    ying_xiong.draw()
+
+    // 13. 让飞机移动
+    // 13.1 调用飞机 move方法， 
+    // 所以 应该先在飞机的构造函数中 给增加一个move方法
+
+    // 13.3 调用飞机的move方法
+    // ying_xiong.move()
+    // 13.4 但这样调用， 飞机只能move以下
+    // 应该让飞机 持续不停的 move
+
+    // 13.12 给飞机增加方向
+    this.fang_xiang = "up"
+    // 13.13 飞机都有方向了 
+    // 所以 飞机就可以按照 指定的方向 进行 move
+    // 13.14 去move函数中完善代码
+    
+    // 13.5 让飞机的move 一直走
+    // 并注释掉 13.3 步 中的 代码
+    function start_game() {
+        // 14.7 让 子弹move 放进定时器中
+        // one_zidan.move()
+        // 根本就不认识该子弹
+        // 14.8 给 ying_xiong 增加 子弹夹
+
+        // 14.9 便利 ying_xiong 的子弹夹
+        // 让 ying_xiong 子弹夹中的么一颗子弹 都进行 move
+        for (var i = 0; i < ying_xiong.zi_dan_jia.length; i++) {
+            // 子弹 还不会进行move呢
+            // 14.12 给子弹 增加 move 方法
+            ying_xiong.zi_dan_jia[i].move(i)
+
+        }
+        // 14.10 在 飞机 构造函数中 
+        // 增加 zi_dan_jia 属性
+
+        ying_xiong.move()
+        requestAnimationFrame(start_game)
+    }
+    start_game()
+
+    // 13.6 在控制台已经看到 飞机的move方法在一直走
+    // 所以 应该想象一下， 当客户按 w s a d 的时候  飞机再move
+    // 13.7 增加 键盘按下去事件
+    document.onkeydown = function () {
+        // 13.8 判断 按键 是否是 wsad 
+        // 如果是的的话 就让飞机 move
+        // 如果不是， 啥都不干
+        // 当按键弹起来， 飞机也应该停止 move
+        // 13.9 给飞机增加一个 是否 按下去的状态
+        // 去构造函数中看13.9的代码
+
+        // 13.11 键盘按下去 修改飞机的状态
+        // 13.12 给飞机增加方向（构造函数中）
+        // 在此 改变飞机的方向
+        if (event.key == "w") {
+            ying_xiong.is_an = true
+            ying_xiong.fang_xiang = "up"
+        } else if (event.key == "s") {
+            ying_xiong.is_an = true
+            ying_xiong.fang_xiang = "down"
+        } else if (event.key == "a") {
+            ying_xiong.is_an = true
+            ying_xiong.fang_xiang = "left"
+        } else if (event.key == "d") {
+            ying_xiong.is_an = true
+            ying_xiong.fang_xiang = "right"
+        } if (event.key == "j") {
+            // 14.1 该 j 绑定发射子弹的事件
+            ying_xiong.fa_she()
+            // 发现 没有 fa_she 函数
+            // 14.2 构造函数中 增加 fa_she 函数
+        }
+    }
+
+    // 13.11 键盘弹起来， 修改飞机的状态
+    // 13.11 键盘按下去， 修改飞机的状态
+    // 在 键盘按下去中也有代码
+    document.onkeyup = function () {
+        if (event.key == 'w' || event.key == "s" || event.key == "a" || event.key == "d") {
+            ying_xiong.is_an = false
+        }
+    }
+
+    // 14. 开始做子弹
+    // 14.1 先让子弹发射的动作绑定到 j 按键中
+
+
+    
+
+</script>
+</html>

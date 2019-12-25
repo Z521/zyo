@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>旋转</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        .box {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            position: relative;
+            top: 200px;
+
+            transform-style: preserve-3d;
+            animation: zhuan 200s linear 0s 1;
+
+        }
+        .box>div {
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+        }
+        .shang {
+            position: relative;
+            left: 10px;
+            top: 1px;
+
+        }
+        .kaui {
+
+            width: 300px;
+            height: 160px;
+            background-size: cover;
+
+            float: left;
+            /* background-color: aqua;     */
+            background-image: url(http://img4.imgtn.bdimg.com/it/u=3725171593,732511357&fm=26&gp=0.jpg);
+
+        }
+
+        @keyframes zhuan {
+            0% {
+                transform: rotateY(90deg) rotateY(90deg);
+            }
+            50% {
+                transform: rotateY(600deg) rotateY(600deg);
+            }
+            100% {
+                transform: rotateY(1200deg) rotateY(1200deg);
+            }
+        }
+        .shang {
+            width: 300px;
+            height: 300px;
+            background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3134184344,2616472986&fm=26&gp=0.jpg);
+            transform: translateZ(-90px) rotateX(225deg) rotateY(0deg) translateZ(-280px);
+        }
+
+        .xia {
+            background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3134184344,2616472986&fm=26&gp=0.jpg);
+            transform: translateZ(90px) rotateX(-225deg) rotateY(0deg) translateZ(280px);
+        }
+        .zuo {
+            background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3134184344,2616472986&fm=26&gp=0.jpg);
+            transform: translateX(150px) rotateY(90deg);
+        }
+
+        .you {
+            background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3134184344,2616472986&fm=26&gp=0.jpg);
+            transform: translateX(-150px) rotateY(-90deg);
+        }
+
+        .qian {
+            transform: translateZ(150px);
+            background-image: url(http://b-ssl.duitang.com/uploads/item/201111/02/20111102172809_vQNsU.jpg);
+
+        }
+        .hou {
+            transform: translateZ(-150px);
+            background-image: url(http://img.mp.sohu.com/q_mini,c_zoom,w_640/upload/20170727/81171ab1c2034d2d94ab0733e274fddd_th.jpg);
+
+        }
+        .hh {
+            width: 0px;
+            height: 0px;
+            border-width: 150px;
+            border-style: solid;
+            border-color: transparent transparent transparent rgb(167, 139, 101);
+            transform: rotate(-90deg) translate(300px) translatey(0px);
+        }
+        .dd {
+            width: 0px;
+            height: 0px;
+            border-width: 150px;
+            border-style: solid;
+            border-color: transparent transparent transparent rgb(167, 139, 101);
+            transform: rotate(-90deg) translate(300px) translatey(0px);
+        }
+        .diao{
+            width: 300px;
+            height: 300px;
+            
+            transform: skew(-15deg, 15deg)  translatey(-80px)  translatex(-7px)   translate(-15px)  rotate(30deg)
+            ;
+            position: relative;
+            overflow: hidden;
+        }
+        .diao>img{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: -50%;
+            top: -50%;
+            transform: rotate(45deg) ;
+        }
+        .dia{
+            width: 300px;
+            height: 300px;
+            
+            transform: skew(-15deg, 15deg)  translatey(-80px)  translatex(-7px)   translate(-15px)  rotate(30deg)
+            ;
+            position: relative;
+            overflow: hidden;
+        }
+        .dia>img{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: -50%;
+            top: -50%;
+            transform: rotate(45deg) ;
+        }
+   
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="shang">
+        </div>
+        <div class="xia ">
+            
+        </div>
+        <div class="zuo">
+                <div class="diao">
+                        <img src="../images/mu.jpg" alt="">
+                    </div> 
+        </div>
+        <div class="you">
+                <div class="dia">
+                        <img src="../images/mu.jpg" alt="">
+                    </div> 
+        </div>
+        <div class="qian">
+        </div>
+        <div class="hou">
+        </div>
+    </div>
+</body>
+
+</html>

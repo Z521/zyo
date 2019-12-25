@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .contact{
+            width: 320px;
+            height: 480px;
+            border: 1px solid black;
+            margin: 0 auto;
+            overflow: scroll;
+            padding: 0 10px;
+        }
+        .options{
+            width: 150px;
+            height: 200px;
+            /* 固定到窗口上 */
+            position: fixed;
+            right: 0px;
+            top: 0px;
+            bottom: 0px;
+            margin: auto 0;
+        }
+        .min_screen{
+            width: 100%;
+            height: 50px;
+        }
+
+        /* 通讯录区域的样式 */
+        .row{
+            width: 100%;
+            display: flex;
+            margin: 8px 0px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .row_l{
+            flex: 1;
+            margin-right: 10px;
+        }
+        .row_r{
+            flex: 5;
+            padding: 2px 4px;
+            border-bottom: 0.5px solid #aaa;
+        }
+        .avator{
+            width: 100%;
+            height: 0px;
+            padding-bottom: 100%;
+            border: 0.5px solid gold;
+            background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1575346040385&di=5e36ffca3cce1488a08a881e04503c5c&imgtype=0&src=http%3A%2F%2Fu.thsi.cn%2F2011%2F11%2F24%2F114302807_1322097823_-1408237429_d2000e3f9255a7e3.jpg);
+            background-size: cover;
+            border-radius: 8px;
+        }
+        .con_name , .con_tel{
+            padding-left: 5px;
+        }
+
+        /* 小屏幕 样式 */
+        .min_name{
+            color: purple;
+        }
+        .min_tel{
+            color: brown;
+        }
+        .scr_name{
+            color: red;
+        }
+        .scr_tel{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact">
+            
+    </div>
+    <div class="options">
+        <input type="text" class="user_name" placeholder="姓名">
+        <input type="text" class="tel_phone" placeholder="电话">
+
+        <button class="add_btn">添加</button>
+        <button class="sel_btn">查询</button>
+        <button class="del_btn">删除</button>
+        <button class="modi_btn">修改</button>
+        <div class="min_screen"></div>
+    </div>
+</body>
+<script>
+    // 获取4个按钮
+    var add_btn = document.querySelector(".add_btn")
+    var sel_btn = document.querySelector(".sel_btn")
+    var del_btn = document.querySelector(".del_btn")
+    var modi_btn = document.querySelector(".modi_btn")
+
+    // 2 个输入框
+    var min_name = document.querySelector(".user_name")
+    var min_tel = document.querySelector(".tel_phone")
+    
+   
+
+    // 获取小屏幕
+    var min_screen = document.querySelector(".min_screen")
+
+    // 联系人区域
+    var contact = document.querySelector(".contact")
+
+    var data = {
+        "l": [{name:"流1" , tel: "1234567"} , {name:"流2" , tel: "1234567"} , {name:"流3" , tel: "1234567"} , {name:"流4" , tel: "1234567"}],
+        "h": [{name: "猴子1" , tel: "54321"} , {name: "猴子2" , tel: "54321"} , {name: "猴子3" , tel: "54321"}],
+        "z": [{name: "张1" , tel: "5467221"} , {name: "张2" , tel: "5467221"}]
+    }
+
+    function layout_fn(){
+        var aa = ""
+        for (key in data) {
+            // key  ----->  "l" , "h" , "z"
+            for (index in data[key]) {
+                var ren = data[key][index]
+                aa += `
+                    <div class="row">
+                        <div class="row_l">
+                            <div class="avator"></div>
+                        </div>
+                        <div class="row_r">
+                            <div class="con_name"><span>` + ren.name + `</span><span>  ----  ` + key + `</span></div>
+                            <div class="con_tel">` + ren.tel + `</div>
+                        </div>
+                    </div>
+                `
+            }
+        }
+
+        contact.innerHTML = aa
+    }
+
+    // 4 个 按钮的 点击事件
+    //   min_name
+    //   min_tel  
+    // 添加 按钮 的 点击事件
+    add_btn.onclick = function () {
+        // 1. 从输入框中 获取 姓名 和 电话号码
+        var name_ = min_name.value
+        var tel_ = min_tel.value
+        
+        add_people_fn(name_ , tel_)
+    }
+    // 查询 按钮 的 点击事件
+    sel_btn.onclick = function () {
+        var name_ = min_name.value
+        var ren = sel_people_fn(name_)
+        // min_screen
+        var str_ = `
+            <div class="scr_name">` + ren.name + `</div>
+            <div class="scr_tel">` + ren.tel + `</div>
+        `
+        min_screen.innerHTML = str_
+    }
+    // 删除 按钮 的 点击事件
+    del_btn.onclick = function () {
+        var name_ = min_name.value
+        del_people_fn(name_)
+    }
+    // 修改 按钮 的 点击事件
+    modi_btn.onclick = function () {
+        var name_ = min_name.value
+        var tel_ = min_tel.value
+        modi_people_fn(name_ , tel_) 
+    }
+
+
+    // 添加人的方法
+    function add_people_fn(name_ , tel_) {
+        // 2. 准备一个临时的人
+        var temp_ = {
+            name: name_ , 
+            tel: tel_
+        }
+        // 3. 把人 放到 数据 data 中
+        // 放到 对应的 组 当中
+        // 3.1 获取 该 name_ 的 首字母
+        var shou_zm = name_[0]
+        // 3.2 看看 数据中 有没有 该 分组
+        var is_you = false
+        for (key in data) {
+            if (key == shou_zm) {
+                is_you = true
+                data[key].push(temp_)
+            }
+        }
+
+        if (is_you == false) {
+            data[shou_zm] = [temp_]
+        }
+        // 4. 重新 做 界面
+        layout_fn()
+    }
+    
+
+    // 删除 人的 方法
+    function del_people_fn(name) {
+        var fenzu = ""
+        var index_ = ""
+        for (key in data) {
+            var min_arr = data[key]
+            for (i in min_arr) {
+                if (min_arr[i].name == name) {
+                    fenzu = key
+                    index_ = i
+                }
+            }
+        }
+
+        data[fenzu].splice(index_ , 1)
+        layout_fn()
+    }
+    // 查询
+    function sel_people_fn(name){
+        var xinxi = ""
+        for (key in data) {
+            for (i in data[key]) {
+                if (data[key][i].name == name) {
+                    xinxi = data[key][i]
+                }
+            }
+        }
+        return xinxi
+    }
+
+    // 修改的方法
+    function modi_people_fn(name , tel){
+        for (key in data) {
+            var min_arr = data[key]
+            for (i in min_arr) {
+                if (min_arr[i].name == name) {
+                    min_arr[i].tel = tel
+                }
+            }
+        }
+        layout_fn()
+    }
+
+    layout_fn()
+</script>
+
+
+
+</html>

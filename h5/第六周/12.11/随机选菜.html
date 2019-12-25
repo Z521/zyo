@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            margin: 0 auto;
+        }
+
+        .ding {
+            width: 150px;
+            height: 50px;
+            background-color: cornflowerblue;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+        }
+
+        .btn {
+            width: 50px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+
+        .btnn {
+            width: 50px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="ding">吃饭</div>
+        <div class="btn"><button class="btn_">开始</button></div>
+        <div class="btnn"><button class="btn__">结束</button></div>
+    </div>
+</body>
+<script>
+    var box = document.querySelector(".box")
+    var ding = document.querySelector(".ding")
+    var btn = document.querySelector(".btn_")
+    var bt = document.querySelector(".btn__")
+    var data = ["喝的", "鸡子", "汉堡", "麻婆豆腐", "红烧肉", "夫妻肺片", "回锅肉", "棒棒鸡", " 醋熘鸡", "圆笼粉蒸肉", "东坡肉"]
+    // var ren = true
+    // btn.onclick = function () {
+    //     if (ren) {
+    //         btn.innerHTML = "结束"
+    //         ren = false
+    //         clearInterval(timer)
+    //     }
+    //      else {
+    //         clearInterval(timer)
+    //         btn.innerHTML = "开始"
+    //         ren = true
+
+    //     }
+    // }
+    // var timer = ""
+    // timer = setInterval(function () {
+    //     var num = han(0, data.length - 1);
+    //     console.log(num);
+    //     ding.innerHTML = data[num];
+    // }, 100);
+
+    var timer = ""
+    btn.onclick = function sa() {
+        if (timer == "") {
+            timer = setInterval(function () {
+                var num = han(0, data.length - 1);
+                console.log(num);
+                ding.innerHTML = data[num];
+            }, 10);
+        }
+
+    }
+    bt.onclick = function () {
+        if (timer != "") {
+            clearInterval(timer)
+            timer = ""
+        }
+        
+    }
+
+
+    // 随机函数
+    function han(a, b) {
+        var suiji = ""
+        return suiji = parseInt(Math.random() * (b - a + 1) + a)
+
+    }
+
+</script>
+
+</html>

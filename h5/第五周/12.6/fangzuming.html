@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .game{
+            width: 600px;
+            height: 600px;
+            border: 1px solid black;
+            margin: 0 auto;
+        }
+        .game img{
+            border: 1px solid white;
+            float: left;
+            box-sizing: border-box;
+        }
+        .header , .tim{
+            text-align: center;
+            font-size: 60px;
+            color: orange;
+        }
+        .start_wrap{
+            text-align: center;
+            margin-top: 20px;
+        }
+        .re_start_btn , .pause_btn{
+            width: 200px;
+            height: 60px;
+            font-size: 30px;
+            color: white;
+            background-color: orange;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">分数: <span class="score"></span></div>
+    <div class="tim">倒计时: <span class="time_ele"></span></div>
+    <div class="game">
+    </div>
+    <div class="start_wrap">
+        <button class="re_start_btn">重新开始</button>
+        <button class="pause_btn">暂停</button>
+    </div>
+</body>
+<script>
+    var game = document.querySelector(".game")
+    var arr = []
+
+    // 分数的控制
+    var score_ele = document.querySelector(".score")
+    var num = 0
+    score_ele.innerText = num
+
+    // 游戏是否是暂停状态
+    var is_pause = false
+
+    // 暂停
+    var pause_btn = document.querySelector(".pause_btn")
+    pause_btn.onclick = function () {
+        if (this.innerText == "暂停") {
+            clearInterval(timer)
+            is_pause = true
+            timer = ""
+            this.innerText = "恢复"
+        } else {
+            is_pause = false
+            this.innerText = "暂停"
+            // 创建定时器
+            create_time()
+        }
+    }
+
+    function create_time(){
+        timer = setInterval(function () {
+            time_num--
+            time_ele.innerText = time_num
+            
+            if (time_num <= 0) {
+                clearInterval(timer)
+                timer = ""
+            }
+        } , 1000)
+    }
+
+
+    // 时间的控制
+    var time_ele = document.querySelector(".time_ele")
+    var time_num = 60
+    time_ele.innerText = time_num
+
+    // 时间定时器
+    var timer = ""
+    
+    // 重新开始按钮
+    var re_start_btn = document.querySelector(".re_start_btn")
+    re_start_btn.onclick = function () {
+        if (time_num > 0) {
+            return 
+        }
+        is_pause = false
+        pause_btn.innerText = "暂停"
+        game.innerHTML = ""
+        hang = 2
+        time_num = 60 
+        time_ele.innerText = time_num  
+        num = 0
+        score_ele.innerText = num
+        arr = []
+        zuo_jiemian()
+    }
+
+    // 随机数
+    function my_random(min , max){
+        return parseInt(Math.random() * (max - min + 1)) + min
+    }
+
+    // 随机颜色
+    function rand_color(){
+        var r = my_random(0 , 255)
+        var g = my_random(0 , 255)
+        var b = my_random(0 , 255)
+        return "rgb(" + r + " , " + g + " , " + b + ")"
+    }
+
+    // 创建一张图片
+    function create_one_img(a , b) {
+        var img = document.createElement("img")
+        img.src = "./ke.png"
+        img.style.backgroundColor = b
+        img.style.width = game.clientWidth / a + "px"
+        img.style.height = game.clientHeight / a + "px"
+        game.appendChild(img)
+        arr.push(img)
+    }
+
+    var hang = 2
+
+    // 根据行数 做 界面
+    function zuo_jiemian() {
+        if (time_num <= 0) {
+            return
+        }
+        if (timer == "") {
+            create_time()
+        }
+        var bg_color = rand_color()
+        for (var i = 0; i < hang * hang; i++) {
+            create_one_img(hang , bg_color)
+        }
+
+        var suiji_xiabiao = my_random(0 , hang * hang - 1)
+        arr[suiji_xiabiao].src = "./fang.png"
+        arr[suiji_xiabiao].onclick = function () {
+            if (time_num <= 0 || is_pause == true) {
+                return
+            }
+            hang++
+            if (hang >= 9) {
+            }
+            num += 10
+            score_ele.innerText = num
+            game.innerHTML = ""
+            arr = []
+            zuo_jiemian()
+        }
+    }
+
+    zuo_jiemian()
+    
+
+    
+    
+
+
+    
+
+    
+
+
+
+  
+
+    
+
+
+</script>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    
+    <div class="wrap">
+        <div class="music">
+            <ul>
+                
+                
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="./js/data.js"></script>
+<script>
+    var bofangqi = ""
+    var my_ul = document.querySelector(".wrap ul")
+    var rows = ""
+    for (var i in music_data) {
+        var a = create_row(music_data[i])
+        rows += a
+    }
+    my_ul.innerHTML = rows
+
+    
+
+    // 播放
+    function playFn(btn){
+        event.stopPropagation()
+        // 获取 播放地址
+        var play_url = btn.getAttribute("url")
+
+        // 获取 当前行 的 audio
+        var cur_audio = btn.parentElement.firstElementChild
+        var is_you = cur_audio.getAttribute("is_you")
+
+        // 获取其他li中的audio
+        var all_audio = my_ul.getElementsByTagName("audio")
+        for (var j = 0; j < all_audio.length; j++) {
+            console.log(all_audio[j])
+            if (all_audio[j] != cur_audio) {
+                all_audio[j].pause()
+                var xiongdi = all_audio[j].nextElementSibling
+                xiongdi.innerText = "播放"
+                all_audio[j].parentElement.parentElement.parentElement.querySelector(".m_img").className = "m_img"
+            }
+        } 
+
+
+        // 获取图片标签
+        var m_img = btn.parentElement.parentElement.parentElement.querySelector(".m_img")
+
+        if (btn.innerText == "播放") {
+            if (is_you == "false") {
+                cur_audio.src = play_url
+                cur_audio.setAttribute("is_you" , "true")
+            }
+            
+            cur_audio.play()
+            btn.innerText = "暂停"
+            // 转
+            m_img.className = "m_img img_zhuan"
+            bofangqi = cur_audio
+        } else {
+            cur_audio.pause()
+            btn.innerText = "播放"
+            // 不转
+            m_img.className = "m_img"
+        }
+
+        
+
+        
+
+
+
+        // console.log(play_url)
+        // my_audio.src = play_url
+        // my_audio.play()
+
+        // currentTime: 设置或获取 当前播放时间
+        // duration: 获取 总时长
+    }
+
+    
+
+
+    setInterval(function () {
+        if (bofangqi == "") {
+            return
+        }
+        // 监听 bofangqi
+        // 当前播放时间
+        var dangqian = bofangqi.currentTime
+        // 总时间
+        var zong = bofangqi.duration
+        // 当前播放百分比
+        var percent = dangqian / zong
+        
+
+        
+        // 行 row
+        var cur_row = bofangqi.parentElement.parentElement.parentElement
+
+        // 获取当前行的时间
+        var time_span = cur_row.querySelector(".m_time span")
+        time_span.innerText = shijain_geshihua(dangqian) + "/" + shijain_geshihua(zong)
+
+        // 通过当前播放百分比 改变背景进度
+        cur_row.style.backgroundSize = (percent * 100) + "% 100%"
+
+    } , 100)
+
+    function shijain_geshihua(n) {
+        var fen = parseInt(n / 60)
+        var miao = parseInt(n % 60)
+        if (fen < 10) {
+            fen = "0" + fen
+        }
+        if (miao < 10) {
+            miao = "0" + miao
+        }
+        return fen + ":" + miao
+    }
+
+    // 行 点击事件
+    function row_fn(row) {
+        // 一行的宽度
+        var hang_kuan = row.clientWidth
+        // 点击的 横向位置
+        var dian_pos = event.x - row.offsetLeft
+        
+        // 当前点击的百分比
+        var click_percent = dian_pos / hang_kuan
+        bofangqi.currentTime = click_percent * bofangqi.duration
+    }
+
+
+</script>
+</html>

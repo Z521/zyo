@@ -1,0 +1,124 @@
+.dingbu {
+    background-color: dimgrey;
+    width: 1600px;
+    height: 100px;
+}
+
+.zhongjian {
+    background-color: rgb(68, 16, 42);
+    width: 1600px;
+    height: 500px;
+}
+
+
+
+.you {
+    background-color: rgb(44, 43, 43);
+    width: 300px;
+    height: 500px;
+    float: right;
+}
+
+.dibu {
+
+    width: 1600px;
+    height: 150px;
+}
+
+
+
+.dajia {
+    font-size: 28px;
+
+}
+
+
+
+
+.re {
+    font-size: 50px;
+    color: red;
+}
+
+.tupian {
+    width: 200px;
+    height: 70px;
+    position: relative;
+    left: 12%;
+    top: 20px;
+
+}
+
+.in {
+    width: 300px;
+    height: 40px;
+    color: red;
+    position: relative;
+    left: 40%;
+    top: -40px;
+
+    border-radius: 18%;
+
+}
+
+.span {
+    position: relative;
+    left: 40.5%;
+    top: -40px;
+
+}
+
+.dian {
+    position: relative;
+    left: 5%;
+    font-size: 30px;
+
+}
+
+.pian {
+    margin-left: 28px;
+}
+
+.img {
+    width: 1300px;
+    height: 500px;
+}
+
+.top {
+    margin-top: 5px;
+}
+
+.geng {
+    font-size: 25px;
+    width: 700px;
+    height: 200px;
+}
+
+a {
+    text-decoration: none;
+    color: beige;
+}
+
+.zzz {
+    color: black;
+    margin-left: 50px;
+}
+.zzz1{
+    color: black;
+    margin-left: 82px;
+
+}
+
+a:hover {
+    color: red;
+}
+
+
+
+.geng {
+    position: relative;
+    left: 50%;
+    top: -70px;
+
+
+}

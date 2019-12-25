@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .game {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+            margin: 0 auto;
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .qiu {
+
+            border-radius: 50%;
+            background-color: blue;
+            position: absolute;
+        }
+        .gan{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="game"></div>
+    <button class="gan">发射</button>
+</body>
+<script>
+    var game = document.getElementsByClassName("game")[0]
+
+    var she = document.getElementsByClassName("gan")[0]
+    she.onclick = function name(params) {
+        jian_qiu()
+    }
+     
+    var zuo = dong(10, 500)
+    function dong(xia, daa) {
+        var don = parseInt(Math.random() * (daa - xia + 1) + xia)
+        return don
+    }
+    function yanse(xiao, da) {
+        var se = parseInt(Math.random() * (da - xiao + 1) + xiao)
+        return se
+    }
+    function bian(min, max) {
+        var ba = parseInt(Math.random() * (max - min + 1)) + min
+        return ba
+    }
+
+
+    var lanzi = []
+
+    function jian_qiu() {
+        var qiu = document.createElement("div")
+        qiu.className = "qiu"
+
+        qiu.bian = bian(10, 150)
+        qiu.style.width = qiu.bian + "px"
+        qiu.style.height = qiu.bian + "px"
+        qiu.style.left = dong(0, game.clientWidth - qiu.bian) + "px"
+        qiu.style.top = dong(0, game.clientHeight - qiu.bian) + "px"
+
+
+
+
+
+        qiu.move = function () {
+            if (qiu.offsetLeft >= game.clientWidth - qiu.bian) {
+                qiu.x = "zuo"
+            } else if (qiu.offsetLeft <= 0) {
+                qiu.x = "you"
+            }
+
+            if (qiu.x == "you") {
+                qiu.style.left = qiu.offsetLeft + 20 + "px"
+            } else {
+                qiu.style.left = qiu.offsetLeft - 15 + "px"
+            }
+
+            if (qiu.offsetTop >= game.clientHeight - qiu.bian) {
+                qiu.y = "fan"
+            } else if (qiu.offsetTop <= 0) {
+                qiu.y = "top"
+            }
+
+            if (qiu.y == "top") {
+                qiu.style.top = qiu.offsetTop + 15 + "px"
+            } else {
+                qiu.style.top = qiu.offsetTop - 30 + "px"
+            }
+            var r = yanse(0, 255)
+            var g = yanse(0, 255)
+            var b = yanse(0, 255)
+            qiu.style.backgroundColor = "rgb(" + r + "," + g + "," + b + " )"
+            if (!qiu.x) {
+                qiu.x = "you"
+                qiu.y = "you"
+            }
+        }
+
+        game.appendChild(qiu)
+        lanzi.push(qiu)
+        return qiu
+    }
+
+
+
+    setInterval(function data() {
+        for (var i = 0; i < lanzi.length; i++) {
+            lanzi[i].move()
+        }
+
+    }, 200);
+
+</script>
+
+</html>

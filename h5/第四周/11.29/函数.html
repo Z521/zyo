@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .he {
+            width: 600px;
+            height: 600px;
+            border: 1px solid #000;
+            position: relative;
+        }
+
+        .qiu {
+            background-color: red;
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            position: absolute;
+            left: 10px;
+
+        }
+        .qiu1 {
+            background-color: red;
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            position: absolute;
+            left: 10px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="he">
+        <div class="qiu"></div>
+        <div class="qiu1"></div>
+    </div>
+
+</body>
+<script>
+    var qiu = document.getElementsByClassName("qiu")[0]
+    // var fang = "zuo"
+    var fang = "you"
+    var a = 0
+    var zong = "top"
+    var b = 0
+    setInterval(
+        function () {
+
+            if (qiu.offsetLeft >= 550) {
+                fang = "zuo"
+            } else if (qiu.offsetLeft <= 0) {
+                fang = "you"
+            }
+            
+            
+            
+            if (fang == "you") {
+                a = a + 350
+            } else {
+                a = a - 5
+            }
+            qiu.style.left = a + "px"
+
+
+
+            if (qiu.offsetTop >= 550) {
+                zong = "fan"
+            } else if (qiu.offsetTop <= 0) {
+                zong = "top"
+            }
+            
+            
+            if (zong == "top") {
+                b = b + 100
+            } else {
+                b = b - 205
+            }
+            qiu.style.top = b + "px"
+
+
+        }, 100)
+        var qiu1 = document.getElementsByClassName("qiu1")[0]
+        setInterval(
+        function () {
+
+            if (qiu1.offsetLeft >= 550) {
+                fang = "zuo"
+            } else if (qiu1.offsetLeft <= 0) {
+                fang = "you"
+            }
+            
+            
+            
+            if (fang == "you") {
+                a = a + 100
+            } else {
+                a = a - 15
+            }
+            qiu1.style.left = a + "px"
+
+
+
+            if (qiu1.offsetTop >= 550) {
+                zong = "fan"
+            } else if (qiu1.offsetTop <= 0) {
+                zong = "top"
+            }
+            
+            
+            if (zong == "top") {
+                b = b + 10
+            } else {
+                b = b - 5
+            }
+            qiu1.style.top = b + "px"
+
+
+        }, 300)
+
+
+
+
+
+
+</script>
+<!-- <script src="./12.js"></script> -->
+<!-- <script>
+    ben = [
+    {
+        name: "张三",
+        dian: 123111
+    },
+    {
+        name: "张",
+        dian: 123
+    }
+
+]
+var caozuo = " "
+while (caozuo != "结束") {
+    caozuo = prompt("请输入")
+    if (caozuo == "结束") {
+        break
+
+    } else {
+        var arr = caozuo.split(" ")
+        if (arr[0] == "+") {
+            jia(arr[1], arr[2])
+        } 
+        else    if (arr[0] == "-") {
+                shan(arr[1])
+
+            }
+        else   {
+            chaxun(arr[1])
+        }
+
+    }
+}
+</script> -->
+
+</html>

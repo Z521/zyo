@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .game {
+            width: 100%;
+            height: 100vh;
+            border: 1px solid black;
+            position: relative;
+        }
+
+        .feiji {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            position: absolute;
+            bottom: 0px;
+            font-size: 30px;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            /* background-color: crimson; */
+            background-image: url(https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3972729001,4254817332&fm=26&gp=0.jpg);
+            background-size: cover;
+        }
+
+        .zidan {
+            width: 6px;
+            height: 20px;
+            /* border: 1px solid #000; */
+            background-color: crimson;
+            border-top-left-radius: 50%;
+            border-top-right-radius: 50%;
+            position: absolute;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="game">
+
+    </div>
+</body>
+<script>
+    var game_wrap = document.querySelector(".game")
+    var game_width = game_wrap.clientWidth;
+    var game_height = game_wrap.clientHeight
+
+
+
+    function Feiji() {
+        var feiji = document.createElement("div")
+        feiji.className = "feiji "
+
+        this.yuansu = feiji
+        this.speed = 15
+        this.direction = "up"
+        this.pos = {
+            x: (game_width / 2) - 100,
+            y: game_height - 100
+        }
+        this.dong = false
+        this.move = function () {
+            if (this.dong) {
+                if (this.direction == "up") {
+                    this.pos.y -= this.speed
+                } else if (this.direction == "down") {
+                    this.pos.y += this.speed
+                } else if (this.direction == "left") {
+                    this.pos.x -= this.speed
+                } else if (this.direction == "right") {
+                    this.pos.x += this.speed
+                }
+                this.yuansu.style.left = this.pos.x + "px"
+                this.yuansu.style.top = this.pos.y + "px"
+            }
+        }
+        this.fashe = function () {
+            var one_zidan = document.createElement("div")
+            one_zidan.className = "zidan"
+            game_wrap.appendChild(one_zidan)
+            console.log(one_zidan);
+
+            one_zidan.x = game_width / 2 - 100 / 2
+            one_zidan.y = this.pos.y - 10
+            one_zidan.style.left = one_zidan.x + "px"
+            one_zidan.style.top = one_zidan.y + "px"
+
+        }
+
+
+
+        this.drwa = function () {
+            game_wrap.appendChild(this.yuansu)
+            this.yuansu.style.left = this.pos.x + "px"
+            this.yuansu.style.top = this.pos.y + "px"
+
+
+        }
+
+    }
+
+    document.onkeydown = function () {
+        if (event.key == "w" || event.key == "s" || event.key == "a" || event.key == "d") {
+            feiji.dong = true
+            if (event.key == "w") {
+                feiji.direction = "up"
+            } else if (event.key == "s") {
+                feiji.direction = "down"
+            } else if (event.key == "a") {
+                feiji.direction = "left"
+            } else if (event.key == "d") {
+                feiji.direction = "right"
+            }
+
+        }
+        if (event.key == "j") {
+            feiji.fashe()
+        }
+    }
+    document.onkeyup = function () {
+        if (event.key == "w" || event.key == "s" || event.key == "a" || event.key == "d") {
+            feiji.dong = false
+        }
+    }
+
+    var feiji = new Feiji()
+    feiji.drwa()
+
+
+
+    function game_() {
+        feiji.move()
+        game_timer = requestAnimationFrame(game_)
+    }
+    game_()
+</script>
+
+</html>

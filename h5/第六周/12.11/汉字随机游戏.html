@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .game{
+            width: 400px;
+            height: 480px;
+            border: 1px solid black;
+            margin: 0 auto;
+        }
+        .shang{
+            height: 400px;
+            font-size: 250px;
+            text-align: center;
+            line-height: 400px;
+        }
+        .xia{
+            height: 80px;
+            background-color: lightcyan;
+            display: flex;
+        }
+        .xia>.kuai{
+            border: 1px solid red;
+            flex: 1;
+            text-align: center;
+            line-height: 80px;
+            font-size: 70px;
+        }
+    </style>
+</head>
+<body>
+    <div class="shijian"></div>
+    <button class="restart_btn">重新开始</button>
+    <div class="game">
+        <div class="shang">
+            蓝
+        </div>
+        <div class="xia">
+            <div class="kuai"></div>
+            <div class="kuai"></div>
+            <div class="kuai"></div>
+            <div class="kuai"></div>
+            <div class="kuai"></div>
+        </div>
+    </div>
+</body>
+<script>
+
+    var screen = document.querySelector(".shang")
+    var kuais = document.querySelectorAll(".xia>.kuai")
+
+    var font_arr = ["黑" , "蓝" , "红" , "绿" , "黄"]
+    var color_arr = ["black" , "blue" , "red" , "green" , "yellow"]
+    var sb = ""
+
+    var shijian_ele = document.querySelector(".shijian")
+    var restart_btn = document.querySelector(".restart_btn")
+
+    var time_num = 10
+    shijian_ele.innerText = time_num
+    var time = ""
+
+    restart_btn.onclick = function () {
+        time = ""
+        time_num = 10
+        shijian_ele.innerText = time_num
+    }
+
+    
+    function my_random(min , max){
+        return parseInt(Math.random() * (max - min + 1)) + min
+    }
+
+    // 获取一个乱动数组
+    function get_luan_arr(a){
+        var luan_arr = []
+        while(luan_arr.length < 5) {
+            var tem_font = a[my_random(0 , 4)]
+            // tem_font  ----->: 在 luan_arr
+            var is_you = false
+            for (var i in luan_arr) {
+                if (luan_arr[i] == tem_font) {
+                    is_you = true
+                }
+            }
+            if(!is_you) {
+                luan_arr.push(tem_font)
+            }
+        }
+        return luan_arr
+    }
+
+
+
+    // 把随机的东西显示到操作盘上
+    function rand_data_to_caozuo() {
+        var rand_colors = get_luan_arr(color_arr)
+        var rand_fonts = get_luan_arr(font_arr)
+        for (var i = 0; i < kuais.length; i++) {
+            kuais[i].innerText = rand_fonts[i]
+            kuais[i].style.color = rand_colors[i]
+
+            
+            if (rand_fonts[i] == font_arr[sb]) {
+                kuais[i].onclick = function () {
+                    // if (time_num <= 0) {
+                    //     console.log("游戏已经结束了....")
+                    //     return
+                    // }
+                    // if (time_num > 0 && time == "") {
+                    //     time = setInterval(function () {
+                    //         console.log(time_num)
+                            
+                    //         time_num--
+                    //         shijian_ele.innerText = time_num
+                    //         if(time_num <= 0) {
+                    //             clearInterval(time)
+                    //             time = ""
+                    //         }
+                    //     } , 1000)
+                    // }
+                    rand_data_to_screen()
+
+                    rand_data_to_caozuo()
+                } 
+            } else {
+                kuais[i].onclick = null
+            }
+        }
+
+    }
+    
+
+
+    // 随机一个字 并且 随机一个颜色
+    // 显示到 显示器上
+    function rand_data_to_screen(){
+        var rand_font = font_arr[my_random(0 , 4)]
+        var aaa = my_random(0 , 4)
+        var rand_color = color_arr[aaa]
+        screen.innerText = rand_font
+        screen.style.color = rand_color
+        sb = aaa
+    }
+
+    // setInterval(function () {
+    //     // rand_data_to_screen()
+    // } , 100)
+
+
+    rand_data_to_screen()
+
+    rand_data_to_caozuo()
+    
+    
+
+
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="fan">?????? </div>
+
+    <div> 
+        <button class="start_btn">开始</button>
+        <button class="stop_btn">停止</button>
+    </div>
+</body>
+
+<script>
+    var start_btn = document.querySelector(".start_btn")
+    var stop_btn = document.querySelector(".stop_btn")
+    var fan_ele = document.querySelector(".fan")
+    var game_time = ""
+
+    var data = [
+        "老碗面" , '热干面' , "盖浇饭" , '黄焖鸡' , "刀削面"
+    ]
+
+    function my_random(min , max){
+        return parseInt(Math.random() * (max - min + 1)) + min
+    }
+
+    function get_fan_to_div() {
+        var suiji = my_random(0 , 4)
+        var fan = data[suiji]
+        
+        fan_ele.innerText = fan
+    }
+
+
+
+    // 开始按钮的点击事件
+    start_btn.onclick = function () {
+        if (game_time == "") {
+            game_time = setInterval(function () {
+                // 拿到饭 并 放到界面
+                get_fan_to_div()
+            } , 100)
+        }
+    }
+    // 停止按钮的点击事件
+    stop_btn.onclick = function () {
+        if (game_time != "") {
+            clearInterval(game_time)
+            game_time = ""
+        }
+    }
+</script>
+
+
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 900px;
+            height: 900px;
+            border: 1px solid #000;
+            margin: 0 auto;
+
+        }
+
+        .pian {
+            border: 1px solid #000;
+            box-sizing: border-box;
+            background-size: cover;
+            float: left;
+        }
+        .start_wrap{
+            text-align: center;
+            margin-top: 20px;
+        }
+        .re_start_btn , .pause_btn{
+            width: 200px;
+            height: 60px;
+            font-size: 30px;
+            /* color: white; */
+            border-radius: 12px;
+        }
+        .header , .tim{
+            text-align: center;
+            font-size: 60px;
+            
+        }
+    </style>
+</head>
+
+<body>
+        <div class="header">分数: <span class="score"></span></div>
+        <div class="tim">倒计时: <span class="time_ele"></span></div>
+    <div class="box">  </div>
+    <div class="start_wrap">
+            <button class="re_start_btn">重新开始</button>
+            <button class="pause_btn">暂停</button>
+        </div>
+</body>
+<script>
+    var game = document.querySelector(".box")
+    var arr = []
+    function tu(a,b) {
+        var img = document.createElement("img")
+        img.className = "pian"
+        img.src = "./timg4444.png"
+        game.appendChild(img)
+        img.style.backgroundColor = b
+        console.log(game.offsetWidth , hang , game.clientWidth / hang)
+        img.style.width = (game.offsetWidth - 2) / hang + "px"
+        img.style.height =(game.offsetHeight - 2) /hang + "px"
+        arr.push(img)
+    }
+    // 分数
+    var score_ele = document.querySelector(".score")
+    var num = 0
+    score_ele.innerText = num
+      // 时间的控制
+      var time_ele = document.querySelector(".time_ele")
+    var time_num = 60
+    time_ele.innerText = time_num
+     // 时间定时器
+    var timer = ""
+    // function create_time(){
+    //     timer = setInterval(function () {
+    //         time_num--
+    //         time_ele.innerText = time_num
+            
+    //         if (time_num <= 0) {
+    //             clearInterval(timer)
+    //             timer = ""
+    //         }
+    //     } , 1000)
+    // 随机
+    function suji(min, max) {
+        return parseInt(Math.random() * (max - min + 1) + min)
+    }
+    function rand_color(){
+        var r = suji(0 , 255)
+        var g = suji(0 , 255)
+        var b = suji(0 , 255)
+        return "rgb(" + r + " , " + g + " , " + b + ")"
+    }
+    var hang = 2
+    // 界面
+    function jiemian() {
+        // if (time_num <= 0) {
+        //     return
+        // }
+        // if (timer == "") {
+        //     create_time()
+        // }
+        var se = rand_color()
+        for (var i = 0; i < hang * hang; i++) {
+            tu(hang,se)
+        }
+        var suijixia = suji(0, hang * hang - 1)
+        arr[suijixia].src = "./timg1.png"
+
+        arr[suijixia].onclick = function () {
+            hang++
+           
+            game.innerHTML = ""
+            arr = []
+            jiemian()
+        }
+        
+
+    }
+
+
+    jiemian()
+</script>
+
+</html>

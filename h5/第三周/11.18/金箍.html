@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+    .jin{
+        width: 10px;
+        height: 500px;
+        background-color: crimson;
+        position: relative;
+        left: 30%;
+        transition: all 2s;
+    }
+    body:hover .jin{
+        transform: rotateZ(5000deg) scale(15,2);
+    }
+    .jin>div{
+        background-color: yellow;
+        width: 10px;
+        height: 20px;
+        position: absolute;
+     
+    }
+    .huang{
+       top: 0;
+    }
+    .hong{
+       
+        bottom: 0;
+    }
+</style>
+
+</head>
+<body>
+    <div class="jin">
+        <div class="huang"></div>
+        <div class="hong"></div>
+    </div>
+</body>
+</html>

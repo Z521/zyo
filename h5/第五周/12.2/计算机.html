@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .cal_wrap{
+            width: 230px;
+            height: 320px;
+            border: 1px solid black;
+            margin: 0 auto;
+        }
+        .view_wrap{
+            width: 100%;
+            height: 80px;
+            background-color: lightcyan;
+            position: relative;
+        }
+        .view_wrap>.my_text{
+            font-size: 45px;
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+        }
+        .btns_wrap{
+            width: 100%;
+            height: 240px;
+            /* background-color: lightcoral; */
+        }
+        .btns_wrap>.kuai{
+            width: 25%;
+            height: 20%;
+            border: 0.2px solid black;
+            box-sizing: border-box;
+            float: left;
+            text-align: center;
+            line-height: 300%;
+            background-color: #d9d9d9;
+        }
+        .btns_wrap>.zero{
+            width: 50%;
+        }
+        .btns_wrap>.caozuo{
+            background-color: #f37f27;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="cal_wrap">
+        <div class="view_wrap">
+            <span class="my_text">0</span>
+        </div>
+        <div class="btns_wrap">
+            <div type="c" class="kuai">c</div>
+            <div type="c" class="kuai">+/-</div>
+            <div type="c" class="kuai">%</div>
+            <div type="c" class="kuai caozuo">+</div>
+            <div type="n" class="kuai">7</div>
+            <div type="n" class="kuai">8</div>
+            <div type="n" class="kuai">9</div>
+            <div type="c" class="kuai caozuo">-</div>
+            <div type="n" class="kuai">4</div>
+            <div type="n" class="kuai">5</div>
+            <div type="n" class="kuai">6</div>
+            <div type="c" class="kuai caozuo">×</div>
+            <div type="n" class="kuai">1</div>
+            <div type="n" class="kuai">2</div>
+            <div type="n" class="kuai">3</div>
+            <div type="c" class="kuai caozuo">÷</div>
+            <div type="n" class="kuai zero">0</div>
+            <div type="n" class="kuai">.</div>
+            <div type="c" class="kuai caozuo equal">=</div>
+        </div>
+    </div>
+
+
+    
+</body>
+
+
+<script>
+
+    var cao_status = "aaa"
+    var first_num = ""
+    var second_num = ""
+
+    var my_text = document.querySelector(".my_text")
+    var kuais = document.querySelectorAll(".kuai")
+    for (var i = 0; i < kuais.length; i++) {
+        kuais[i].onclick = function () {
+            // 获取按钮的类型 n / c
+            var btn_type = this.getAttribute("type")
+            // 按钮上面的字
+            var value = this.innerText
+
+            if (btn_type == "c") {
+                console.log("操作按钮")
+                if (value == "c") {
+                    my_text.innerText = "0"
+                } else if (value == "+" || value == "-" || value == "×" || value == "÷") {
+                    cao_status = value
+                    document.querySelector(".equal").setAttribute("yuansuan" , value)
+                    first_num = my_text.innerText
+                } else if (value == "=") {
+                    second_num = my_text.innerText
+                    var yunsuan = document.querySelector(".equal").getAttribute("yuansuan")
+                    var jieguo = 0
+                    if (yunsuan == "+") {
+                        jieguo = (first_num - 0) + (second_num - 0)
+                    } else if (yunsuan == "-") {
+                        jieguo = (first_num - 0) - (second_num - 0)
+                    } else if (yunsuan == "×") {
+                        jieguo = (first_num - 0) * (second_num - 0)
+                    } else if (yunsuan == "÷") {
+                        jieguo = (first_num - 0) / (second_num - 0)
+                    }
+                    my_text.innerText = jieguo
+                }
+            } else if (btn_type == "n") {
+                console.log("数字按钮")
+                if (cao_status != "aaa") {
+                    my_text.innerText = ""
+                    cao_status = "aaa"
+                }
+                if (my_text.innerText == 0) {
+                    my_text.innerText = ""
+                }
+                my_text.innerText += value
+            }
+        }
+    }
+
+</script>
+
+</html>

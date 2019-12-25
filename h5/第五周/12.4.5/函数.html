@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .div {
+            width: 1000px;
+            height: 1000px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div"></div>
+</body>
+<script>
+    var ss = document.querySelector(".div")
+    // 1. 封装 求三个数 求最大值 最小值 的一个函数
+    // function shu(a = []) {
+    //     var da = xiao = a[0]
+    //     for (var i = 0; i < a.length; i++) {
+    //         if (a[i] > da) {
+    //             da = a[i]
+    //         } if (a[i] < xiao) {
+    //             xiao = a[i]
+    //         }
+    //     }
+    //     console.log(da,xiao);}
+    // shu(aa =[14,36,7,5,88,] )
+
+
+
+    // 2. 封装 生成随机验证码(4位) 的一个函数
+    // var a = parseInt(Math.random) 
+    // function da(da,xiao) {
+    //     var ba = parseInt(Math.random() * (da ) )+ xiao
+    //     return ba
+    // }
+    //  var a = da(9,1)
+    //  var b = da(9,1)
+    //  var aa = da(9,1)
+    //  var bb = da(9,1)
+    //  console.log(a,aa,bb,b);
+
+
+    // 3. 封装 数字 加密 和 反加密 的功能函数
+    //     (加密规则 扩大三倍 加25 在扩大两倍 再拼接一个"ABC")
+    // function aa(a) {
+    //     var b = (a * 3 + 25) * 2 + "ABC"
+    //     console.log("加密"+b,"反加密"+a);
+    // }
+    // aa(2)
+
+    // 4. 封装 获取一个随机颜色的 函数
+    // function yan(da, xiao) {
+    //     var s = parseInt(Math.random() * (da - xiao ) + xiao)
+    //     return s
+    // }
+    // function name() {
+    //     var r = yan(0, 255)
+    //     var g = yan(0, 255)
+    //     var b = yan(0, 255)
+    //     ss.style.backgroundColor = "rgb(" + r + "," + g + "," + b + " )"
+    // }
+    // name()
+    // 另一种 
+    // function yan() {
+    //     var r = parseInt(Math.random() *256);
+    //     var g = parseInt(Math.random() *256);
+    //     var b = parseInt(Math.random() *256);
+    //     ss.style.backgroundColor = "rgb(" + r + "," + g + "," + b + " )"
+    // }
+    // yan() 
+
+    // 5. 封装一个函数 功能, 创建创n建行和m列的table表格
+//     function name(n,m) {
+//     var table = "<table>"
+//     for (var i = 0; i < n; i++) {
+//       var tr = "<tr>"
+//       for (var j = 0; j < m; j++) {
+//         tr = tr + "<td>1</td>" 
+//       }
+//       tr = tr + "</tr>"
+//       table += tr
+//     }
+// }
+// console.log(name(7,3) );
+// ss.appendChild(name(7,3))
+
+    // 6. 求 m ~n 之间的 数字总和  要求 封装成函数
+    // function nae(n, m) {
+    //     var a = 0
+    //     for (var i = n; i < m; i++) {
+    //       a += i
+    //     }
+    //     return a
+    // }
+    // console.log(nae(2, 8));
+
+
+
+
+
+    // 7. 根据r 求出圆的面积和周长 要求 将功能封装成函数
+// var aa =prompt("11")
+    // function name(r,d) {
+    //     var s = 3.1415
+    //     var a = Math.PI * r * r
+    //     var z = s * d
+    //     console.log(a,z);
+    // }
+    // name(5,10)
+
+    // 8. m ~n 之间 随机出来5个数, 并求出当中的最大值
+    // 将五个数和最大值都返回出来
+    // m 在 5 ~12 之间
+    // n 在 59 ~78 之间
+    // 封装成函数
+    function suiji(min,max) {
+    return parseInt(Math.random() * (max - min + 1)+ min)
+}
+function wuge(n,m) {
+    if (( m => 5 && m<= 12) &&(n=>59 && n<= 78)) {
+        var a = 0
+        var b = []
+        for (let i = 0; i < 5; i++) {
+            var  one_ran = suiji(n,m)
+            b.push(one_ran)
+        }
+        if (one_ran > a) {
+            a = one_ran
+        }
+        return {
+            "b" : b ,
+            "a" : a
+             
+        }
+        }else{
+            "没有这个数"
+        }
+       
+}
+ var dsa = wuge(10,70)
+console.log(dsa);
+    // 9. 封装一个反转数组功能的函数
+    // 10. 封装一个打印乘法口诀表的函数, 要求 能控制是多少行
+    // 11. 封装一个函数,
+    //     功能 对 数组进行排序
+    // 可正序 也可 反序排序
+    // 12. 有一个数组, 里面有五个人,
+    //     每个人都有 姓名 年龄 成绩 身高 体重
+    // 要求, 制作一个函数, 能按照不同的属性进行排序
+    // 13. 封装一个函数(要求该数字 > 3), 判断某一个数字是否是质数
+    // 14. 封装一个数组去重的函数
+    // 15. 一个三位数, 求各个位置的数字之和,
+    //     要求 封装成函数
+    // 16. 求 10!(10的阶乘)
+    // 封装成函数
+    // 17. 珠峰海拔8848米，现在有足够大的纸，厚度是0.01米，折多少次高度可以超过珠穆朗玛峰
+    // 封装成函数
+    // 18. 你爸给了你n(比如 10000)元,
+    //     每天花一半,
+    //     几天可以花完(碰见毛钱, 直接扔掉)
+    // 要求, 封装成函数
+    // 19. 有一个乒乓球, 从1000米的高空掉落,
+    //     每次弹起一半的高度, (不足一米的, 直接忽略)
+    // 一共可以弹起多少次
+    // 封装成函数
+    // 20. 斐波那契数列, 要求函数封装来实现
+    //     (附加题, 可以不做)
+</script>
+
+</html>

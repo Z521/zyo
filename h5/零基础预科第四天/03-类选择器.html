@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>类选择器</title>
+    <!-- p元素设置为蓝色
+    div元素设置为红色
+    span元素设置为绿色。 采用标签选择器-->
+
+    <style>
+    /* 标签选择器，选中所有的p 元素。 */
+        p {
+            color: blue;
+        }
+
+        div {
+            color: red;
+        }
+
+        span {
+            color: green;
+        }
+
+        /* 现在想让第二个p元素显示成紫色 */
+        /* 类选择器，second是第二个p标签的class属性值 */
+        /* 在class属性值前面加上点 */
+        .second {
+            color: purple;
+        }
+    </style>
+</head>
+<body>
+    <p>
+         这是一个P元素！
+    </p>
+
+    <p class="second">
+        这是第二个P元素！
+    </p>
+
+    <div>
+        这是一个DIV 元素
+    </div>
+
+    <div>
+        这是第二个DIV元素。
+    </div>
+
+    <span>
+        这是一个Span元素。
+    </span>
+</body>
+</html>

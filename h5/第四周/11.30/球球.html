@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .game {
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            border: 1px solid black;
+            position: relative;
+        }
+
+        .qiu {
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="game">
+
+    </div>
+
+</body>
+
+<script>
+    var game = document.getElementsByClassName("game")[0]
+    var lanzi = []
+
+    function create_one_qiu(speed) {
+        var qiu = document.createElement("div")
+
+        qiu.className = "qiu"
+        qiu.bian = my_random(20, 80)
+        qiu.style.left = my_random(0, game.clientWidth - qiu.bian) + "px"
+        qiu.style.top = my_random(0, game.clientHeight - qiu.bian) + "px"
+        
+        qiu.style.width = qiu.bian + "px"
+        qiu.style.height = qiu.bian + "px"
+        game.appendChild(qiu)
+        qiu.move = function () {
+            var r = my_random(0, 255)
+            var g = my_random(0, 255)
+            var b = my_random(0, 255)
+            qiu.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")"
+        }
+        return qiu
+    }
+
+    for (var i = 0; i < 10; i++) {
+        var a = create_one_qiu(my_random(3, 13))
+        lanzi.push(a)
+    }
+
+
+  
+    function my_random(min, max) {
+        var a = parseInt(Math.random() * (max - min + 1)) + min
+        return a
+    }
+
+    setInterval(function () {
+        for (var i = 0; i < lanzi.length; i++) {
+            lanzi[i].move()
+        }
+    }, 100);
+
+
+</script>
+
+</html>

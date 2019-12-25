@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .bp{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: beige;
+            border: 3px solid gray;
+            position: relative;
+        }
+        .bp span{
+            position: absolute;
+            display: inline-block;
+            width: 16px;
+            height: 100px;
+            left: 92px;
+            top: 0px;
+            text-align: center;
+            transform-origin: bottom;
+        } 
+        .bp .zhen>div{
+            position: absolute;
+            transform-origin: bottom;
+            border-top-left-radius: 50%;
+            border-top-right-radius: 50%;
+        }
+        .bp .hour{
+            left: 98px;
+            top: 40px;
+            width: 4px;
+            height: 60px;
+            background-color: red;
+        } 
+        .bp .fen{
+            left: 99px;
+            top: 30px;
+            width: 2px;
+            height: 70px;
+            background-color: blue;
+        }  
+        .bp .miao{
+            left: 99.5px;
+            top: 10px;
+            width: 1px;
+            height: 90px;
+            background-color: black;
+        }  
+    </style>
+</head>
+<body>
+    <div class="bp">
+        <div class="number">
+            <span>12</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>9</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span>10</span>
+            <span>11</span>
+        </div>
+        <div class="zhen">
+            <div class="hour"></div>
+            <div class="fen"></div>
+            <div class="miao"></div>
+        </div>
+    </div>
+</body>
+<script src="./js/jquery-3.4.1.min.js"></script>
+<script>
+    $(".bp span").each(function (index , item) {
+        $(item).css({
+            "transform": "rotate(" + (index * 30) + "deg)"
+        })
+    })
+
+    // var a = 34
+    // 秒针 每次 转 6deg
+    // 分针 每次 转 1/10 deg
+    // 时针 每次 转 1/120 deg
+
+    
+
+    function layout_view(){
+        var aaa = new Date()
+        var shi = aaa.getHours()
+        var fen = aaa.getMinutes()
+        var miao = aaa.getSeconds()
+        $(".miao").css({
+            "transform": "rotate(" + (6 * miao) + "deg)"
+        })
+        $(".fen").css({
+            "transform": "rotate(" + (0.1 * fen) + "deg)"
+        })
+        $(".hour").css({
+            "transform": "rotate(" + ((1 / 120) * shi) + "deg)"
+        })
+    }
+    layout_view()
+
+
+    
+
+    setInterval(function () {
+       layout_view()
+    } , 1000)
+</script>
+</html>

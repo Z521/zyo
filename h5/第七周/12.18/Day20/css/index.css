@@ -1,0 +1,29 @@
+.min_div , .max_div{
+    float: left;
+    width: 400px;
+    height: 400px;
+}
+.max_div{
+    margin-left: 20px;
+
+    overflow: scroll;
+    background-image: url(../images/max.jpg);
+    background-repeat: no-repeat;
+    display: none;
+}
+.min_div{
+    position: relative;
+}
+.kuai{
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(rgba(0 , 0 , 200 , 0.5) 15%, rgba(1 , 1 , 1 , 0) 0);
+    background-size: 4px 4px;
+    position: absolute;
+    left: 200px;
+    top: 200px;
+    display: none;
+}
+img{
+    display: block;
+}

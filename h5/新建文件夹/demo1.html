@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    // var dian_nao = {
+    //    xianshiqi: "三星" , 
+    //    jianpan: "双飞燕" 
+    // }
+    // console.log(dian_nao["jianpan"])
+    // console.log(dian_nao.xianshiqi)
+    // 容器 字典  内容  靠 (键)下标 来获取
+    // var bbb = {
+    //     "name": "高旭阳111",
+    //     "age": 13,
+    //     "score": 76,
+    //     "hobby": "母的"
+    // }
+
+    // // 容器 数组  内容 靠 下标来获取
+    // var aaa = ["高旭阳" , 13 , 76 , "母的"]
+
+    // 字典
+    // 键值对
+    // {
+    //     key: value,
+    //     key2: value2
+    // }
+
+    // console.log(gao_xu_yang.score)
+
+
+    // var stu1 = {
+    //     name: "张三",
+    //     age: 12 , 
+    //     score: 23
+    // }
+    // var stu2 = {
+    //     name: "lisi",
+    //     age: 45 , 
+    //     score: 87
+    // }
+
+    // console.log(stu1.score , stu2.score)
+
+    var arr = [
+        {
+            name: "张三",
+            age: 12 , 
+            score: 76
+        },
+        {
+            name: "李四" , 
+            age: 21 , 
+            score: 89
+        },
+        {
+            name: "王五" , 
+            age: 34 , 
+            score: 134
+        },
+        {
+            name: "侯思宇" , 
+            age: 18 , 
+            score: 98
+        }
+    ]
+
+    var nb = 0
+    var ren = ""
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i].score > nb) {
+            nb = arr[i].score
+            ren = arr[i]
+        }
+    }
+
+    console.log(ren)
+
+</script>
+
+
+</html>

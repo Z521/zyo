@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>调查问卷</title>
+    <style>
+        body {
+            background-color: skyblue;
+        }
+
+        .div1 {
+            border: 1px solid black;
+            background-color: white;
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        p {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .header1 {
+            float: left;
+            padding-left: 20px;
+        }
+
+        .header2 {
+            float: right;
+            padding-right: 30px;
+        }
+
+        .main1 {
+            margin-top: 100px;
+            clear: both;
+            padding-left: 20px;
+        }
+
+        .main1 span {
+            display: block;
+        }
+
+        .main2 {
+            padding-top: 20px;
+        }
+
+        .main2 .s1 {
+            width: 120px;
+        }
+
+        .foot {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        .foot [type="submit"] {
+            width: 80px;
+            background-color: green;
+            color: white;
+        }
+
+        #text {
+            border-bottom: 1px solid black;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div1">
+        <form class="form1" action="">
+            <p>html5的调查问卷</p>
+            <div class="header">
+                <div class="header1">姓名：<input type="text" id="text" placeholder="请输入你的名字"></div>
+                <div class="header2">
+                    性别：<input type="radio" name="gender" value="male" id="mela" checked><label for="mela">男</label>
+                    <input type="radio" name="gender" value="female" id="femela"><label for="femela">女</label>
+                </div>
+            </div>
+            <div class="main">
+                <div class="main1">
+                    <span>Q1:你知道html5（h5）吗？</span>
+                    <div class="main2">
+                        <input type="radio" id="known" name="x" value="konwn" checked><label for="known">知道</label><br><br>
+                        <input type="radio" id="unknown" name="x" value="unknown"><label for="unknown">不知道</label>
+                    </div>
+                </div>
+                <div class="main1">
+                    <span>Q2:你玩过哪些H5游戏？（多选）</span>
+                    <div class="main2">
+                        <input type="checkbox" id="x1"><label for="x1">游戏1</label><br><br>
+                        <input type="checkbox" id="x2"><label for="x2">游戏2</label><br><br>
+                        <input type="checkbox" id="x3"><label for="x3">游戏3</label>
+                    </div>
+                </div>
+                <div class="main1">
+                    <span>Q3:H5是否会成为大势所趋？</span>
+                    <div class="main2">
+                        <select class="s1">
+                            <option value="hui">会</option>
+                            <option value="bh">不会</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="main1">
+                    <span>Q4:谈谈你对H5的理解</span>
+                    <div class="main2">
+                        <textarea name="lijie" id="" cols="50" rows="10"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="foot">
+                <input type="submit" name="submit" value="提交">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

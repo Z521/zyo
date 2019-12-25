@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .max,
+        .min {
+            float: left;
+            width: 400px;
+            height: 448px;
+
+        }
+
+        .max {
+
+            margin-left: 30px;
+            overflow: scroll;
+            background-image: url(./img/2.jpg);
+
+
+            background-repeat: no-repeat;
+            display: none;
+        }
+
+        .min {
+            position: relative;
+        }
+
+        .kuai {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(rgba(0, 0, 255, 0.6)30%, rgba(255, 255, 255, 0)0);
+            background-size: 4px 4px;
+            position: absolute;
+            left: 200px;
+            top: 200px;
+            display: none;
+        }
+
+        img {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="min">
+        <img src="./img/1.jpg" alt="">
+    </div>
+    <div class="max">
+        <div class="kuai">
+
+        </div>
+    </div>
+
+</body>
+<script src="../../jquery-3.4.1.min.js"></script>
+<script>
+    var left_space = $(".min")[0].offsetLeft
+    var top_space = $(".min")[0].offsetTop
+
+    var big_x = 0
+    var big_y = 0
+
+    // 鼠标进入事件的监听
+    $(".min").mouseenter(function () {
+        $(".max , .kuai").css({
+            "display": "block"
+        })
+    })
+    
+    // 鼠标移动事件的监听
+    $(".min").mousemove(function () {
+        var kuai1 = event.clientX - left_space - 100
+        var kuai2 = event.clientY - top_space - 100
+        console.log(kuai2);
+        if (kuai1 <= 0) {
+            kuai1 = 0
+        }
+        if (kuai1 >= 200) {
+            kuai1 = 200
+        }
+        if (kuai2 <= 0) {
+            kuai2 = 0
+        }
+        if (kuai2 >= 250) {
+            kuai2 = 250
+            
+            
+        }
+        $(".kuai").css({
+            "left": kuai1 + "px",
+            "top": kuai2 + "px"
+        })
+
+        $(".max").css({
+            "background-position": (kuai1 * -2) + "px " + (kuai2 * -2) + "px"
+        })
+    })
+
+    // 鼠标移出事件
+    $(".min").mouseleave(function () {
+        $(".max, .kuai").css({
+            "display": "none"
+        })
+    })
+
+
+</script>
+
+</html>

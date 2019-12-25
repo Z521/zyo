@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="he"></div>
+</body>
+<script>
+    var box = document.querySelector(".he")
+     
+        var b =[2,8,7,54,98,35,122,6,12,32] 
+    for(i = 0; i< b.length - 1;i++){
+        for (var ci = 0; ci < b.length - 1 - i ; ci++) {
+
+
+           if ( b[ci - 1] > b[ci]) {
+               var a = b[ci - 1]
+                b[ci - 1] = b[ci ]
+                b[ci ] = a
+           }
+            
+        }
+    }
+    console.log(b);
+    
+    var b =[2,8,7,54,98,35,122,6,12,32] 
+    function paixu(a) {
+        for(i = 0; i< a.length - 1;i++){
+        for (var j = 0; j < a.length - 1 - i ; j++) {
+           var  aming = diao.chinese_to_pinyin(a[j].name)
+           var  amingg = diao.chinese_to_pinyin(a[j + 1].name)
+
+           if ( aming > amingg) {
+               var a = a[j ]
+                a[j ] = a[j + 1]
+                a[j + 1] = a
+           }
+            
+        }
+        return a 
+    }
+    }
+    
+    
+    // he.innerHTML = "aa"
+</script>
+</html>

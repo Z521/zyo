@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .game {
+            width: 100%;
+            height: 90vh;
+            background-color: #aaa;
+            border: 1px solid black;
+            position: relative;
+        }
+
+        .tanke {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            position: absolute;
+            bottom: 0px;
+            font-size: 30px;
+            color: white;
+            text-align: center;
+        }
+
+        .tanke1 {
+            background-color: red;
+        }
+
+        .tanke2 {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="game">
+        <!-- <div class="tanke tanke1">11</div>
+       <div class="tanke tanke2">22</div> -->
+    </div>
+</body>
+
+<script>
+    // 1. 准备坦克创建的构造函数 Create_tanke()
+    // 2. 丰富构造函数
+    //     2.1 增加名称属性 name
+    //     2.2 增加元素属性 ele
+    //         2.2.1 给给元素设置 类名 tanke tanke1
+    //     2.3 增加死亡状态属性 is_die ---> false
+    //     2.4 增加是否在屏幕上的状态属性 is_in_game  ---> false
+    //     2.5 增加生命值属性 life  --> 3
+    //     2.6 增加速度属性 speed --> 1
+    //     2.7 增加方向属性 direction --> up
+    //     2.8 增加位置坐标属性 pos{x:0 , y:0}
+    //     2.9 增加移动方法 move()
+    //     2.10 增加发射子弹方法 fire()
+    //     2.11 增加绘制到界面的方法 draw()
+    //     2.12 增加死亡方法 die()
+    // 3. 通过坦克构造函数, 创建两个坦克对象(带着名字创建)
+    // 4. 让两个坦克绘制到界面上
+    // 5. 监听键盘按下去事件
+    // 6. 让坦克的坐标生效
+    // 7. 增加控制整个游戏的定时器 game_timer
+    // 8. 给坦克增加一个is_an 属性
+    // 8.1 用来表示, 是否按下键盘上的按键
+    // 9. 键盘按下去的时候 
+    //  9.1 如果是 wsad 让tanke1.is_an = true
+    //  9.1 如果是 上下左右键 让 tanke2.is_an = true
+    // 10. 在坦克 move 中, 增加一个判断
+    //  10.1 如果this.is_an == true
+    //      就执行该move方法
+    // 11. 在键盘按下的那一瞬间 改变坦克的方向
+    // 12. 让tanke的move方法 , 按照既定的方向进行移动
+    //  12.1 修改坦克的坐标, 让坦克通过js 达到屏幕底部位置
+    //  12.2 修改 draw 坦克方法, 坦克按照坐标来进行绘制
+
+    var game_timer = ''
+    
+    var game_wrap = document.querySelector(".game")
+    var game_width = game_wrap.clientWidth;
+    var game_height = game_wrap.clientHeight
+    function Create_tanke(name) {
+        var tanke = document.createElement("div")
+        // 2.1 增加名称属性 name
+        tanke.className = "tanke " + name
+        //         2.2.1 给给元素设置 类名 tanke tanke1
+        tanke.innerText = name == "tanke1" ? "111" : "222"
+
+        this.yuansu = tanke
+        this.name = name
+        //     2.3 增加死亡状态属性 is_die ---> false
+        this.is_die = false
+        //     2.4 增加是否在屏幕上的状态属性 is_in_game  ---> false
+        this.is_in_game = false
+        //     2.5 增加生命值属性 life  --> 3
+        this.life = 3
+        //     2.6 增加速度属性 speed --> 1
+        this.speed = 1
+        //     2.7 增加方向属性 direction --> up
+        this.direction = "up"
+        this.is_an = false
+        //  12.2 修改 draw 坦克方法, 坦克按照坐标来进行绘制
+        var tanke1X = (game_width / 2) - (100 / 2) - 100
+        var tanke2X = (game_width / 2) - (100 / 2) + 100
+        //     2.8 增加位置坐标属性 pos{x:0 , y:0}
+        this.pos = {
+            x: name == "tanke1" ? (tanke1X) : (tanke2X),
+            y: game_height - 100
+        }
+        //     2.9 增加移动方法 move()
+        this.move = function () {
+            // 10. 在坦克 move 中, 增加一个判断
+            //  10.1 如果this.is_an == true
+            //      就执行该move方法
+            // 11. 在键盘按下的那一瞬间 改变坦克的方向
+            // 12. 让tanke的move方法 , 按照既定的方向进行移动
+            //  12.1 修改坦克的坐标, 让坦克通过js 达到屏幕底部位置
+            if (this.is_an) {
+                if (this.direction == "up") {
+                    this.pos.y -= this.speed
+                } else if (this.direction == "down") {
+                    this.pos.y += this.speed
+                } else if (this.direction == "left") {
+                    this.pos.x -= this.speed
+                } else if (this.direction == "right") {
+                    this.pos.x += this.speed
+                }
+
+                this.yuansu.style.left = this.pos.x + "px"
+                this.yuansu.style.top = this.pos.y + "px"
+            }
+        }
+        //     2.10 增加发射子弹方法 fire()
+        this.fire = function () {
+            console.log("发子弹")
+        }
+        //     2.11 增加绘制到界面的方法 draw()
+        this.draw = function () {
+            if (this.is_in_game == false) {
+                game_wrap.appendChild(this.yuansu)
+                this.is_in_game = true
+                this.yuansu.style.left = this.pos.x + "px"
+                this.yuansu.style.top = this.pos.y + "px"
+            }
+        }
+        //     2.12 增加死亡方法 die()
+        this.die = function () {
+            this.is_die = true
+            this.life--
+            if (this.life < 0) {
+                console.log("舍命用完...")
+            }
+            this.is_in_game = false
+        }
+    }
+    // 3. 通过坦克构造函数, 创建两个坦克对象(带着名字创建)
+    // 6. 让坦克的坐标生效
+
+    var tanke1 = new Create_tanke("tanke1")
+    var tanke2 = new Create_tanke("tanke2")
+    // 4. 让两个坦克绘制到界面上
+    tanke1.draw()
+    tanke2.draw()
+
+    // 5. 监听键盘按下去事件
+    document.onkeydown = function () {
+        if (event.key == "w" || event.key == "s" || event.key == "a" || event.key == "d") {
+            // 8. 给坦克增加一个is_an 属性
+            tanke1.is_an = true
+            // 8.1 用来表示, 是否按下键盘上的按键
+            // 9. 键盘按下去的时候 
+            //  9.1 如果是 wsad 让tanke1.is_an = true
+            //  9.1 如果是 上下左右键 让 tanke2.is_an = true
+            if (event.key == "w") {
+                tanke1.direction = "up"
+            } else if (event.key == "s") {
+                tanke1.direction = "down"
+            } else if (event.key == "a") {
+                tanke1.direction = "left"
+            } else if (event.key == "d") {
+                tanke1.direction = "right"
+            }
+        } else if (event.key == "ArrowUp" || event.key == "ArrowDown" || event.key == "ArrowLeft" || event.key == "ArrowRight") {
+            tanke2.is_an = true
+            if (event.key == "ArrowUp") {
+                tanke2.direction = "up"
+            } else if (event.key == "ArrowDown") {
+                tanke2.direction = "down"
+            } else if (event.key == "ArrowLeft") {
+                tanke2.direction = "left"
+            } else if (event.key == "ArrowRight") {
+                tanke2.direction = "right"
+            }
+        }
+    }
+    document.onkeyup = function () {
+        if (event.key == "w" || event.key == "s" || event.key == "a" || event.key == "d") {
+            tanke1.is_an = false
+        } else if (event.key == "ArrowUp" || event.key == "ArrowDown" || event.key == "ArrowLeft" || event.key == "ArrowRight") {
+            tanke2.is_an = false
+        }
+    }
+    // 7. 增加控制整个游戏的定时器 game_timer
+    function game_animation() {
+        tanke1.move()
+        tanke2.move()
+        game_timer = requestAnimationFrame(game_animation)
+    }
+    game_animation()
+
+
+</script>
+
+</html>

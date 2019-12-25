@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .ball , .ball2{
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+            position: relative;
+        }
+        .ball2{
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="ball"></div>
+    <div class="ball2"></div>
+</body>
+<!-- <script src="./data.js"></script> -->
+<script>
+
+    // function xxx() {
+    //     右移动
+    //     下移动
+    //     requestAnimationFrame(xxx)
+    // }
+    // xxx()
+
+    // var a = "abcdeliucedfabasdf"
+    // var b = a.substr(5 , 4)
+    // console.log(b)
+
+
+    // var ball = document.querySelector(".ball")
+    // var ball2 = document.querySelector(".ball2")
+
+    // var ding = setInterval(function () {
+    //     ball2.style.left = (ball2.offsetLeft + 1) + "px"
+    // }, 16);
+    
+    // var donghua = ""
+    // function yidong(){
+    //     ball.style.left = (ball.offsetLeft + 1) + "px"
+    //     donghua = requestAnimationFrame(yidong)
+    // }
+    // yidong()
+
+    // window.setTimeout(function () {
+    //     clearInterval(ding)
+    //     cancelAnimationFrame(donghua)
+    // } , 1000)
+
+    
+
+
+    
+
+    // 帧率  fps
+
+    // 1  更新 60次
+    // 1/60
+
+
+    
+
+    
+
+    // 弹框
+    // alert("zhangsan ")
+    // confirm("zhangsan")
+    // prompt("jlkasdk")
+
+    // location
+    // var bbb = "张三"
+
+    // var ccc = encodeURIComponent(bbb)
+    // encode: 编码
+    // decode: 解码
+    // encodeURIComponent(aaa): 编码一个字符串
+    // decodeURIComponent(aaa): 解码一个字符串
+    // console.log(ccc)
+
+    // var aaa = window.location.href
+    // var aaa = window.location.hash
+    // var aaa = window.location.host
+
+
+    // agent: 代理
+    // platform: 平台
+    // console.log(window.navigator.userAgent)
+    // var user_agent = navigator.userAgent
+    // user_agent = user_agent.toLowerCase()
+    // console.log(user_agent)
+    // if (user_agent.indexOf("chrome") == -1) {
+    //     alert("非谷歌浏览器")
+    // } else {
+    //     alert("是 谷歌浏览器...")
+    // }
+    // console.log(window.navigator.platform)
+    // window.history.go(0)    // 刷新
+    // window.history.go(-1)   // 后退
+    // window.history.back()   // 后退
+    // window.history.go(1)    // 前进
+    // window.history.forward() // 前进
+    // console.log(window.history)
+
+
+
+
+
+    // setTimeout(function () {
+    //     window.history.go(-1)
+    // } , 2000)
+
+    // setTimeout(function () {
+    //     window.history.go(-1)
+    // } , 4000)
+
+    // setTimeout(function () {
+    //     window.history.go(1)
+    // } , 6000)
+
+
+
+
+
+    // a : href
+    // img: src
+    // link : src
+    // script: src
+    // audio: src
+    // video: src
+    // src
+    // url
+    // http://www.baiduc.com:80/a/b/c/111.jpg
+
+    // href 
+    // protocol DNS--->ip port path  params       hash (router)
+    // http://xxx.yyy.com:80/a/b/c/d?a=1&b=er&c=3#jkasdfasdf
+
+    // console.log(aaa)
+
+    // setTimeout(function () {
+    //     // window.open("http://www.baidu.com" , "_self" , 'fullscreen=1')
+    //     // 打开新窗口
+    //     // xxx = window.open('http://www.baidu.com','_blank','fullscreen=1');
+    //     // xxx = window.open('','','width=300,height=300');
+    //     // xxx.document.write("<p>我是新窗口</p>");
+
+        
+    // }, 100);
+
+    // setTimeout(function () {
+        
+    //     // console.log("4秒到了....")
+    //     // xxx.close()
+    //     xxx.moveBy(250,250);
+	//     xxx.focus();
+    // }, 4000);
+
+
+
+    // var a = 6;
+    // console.log(a)
+
+    // new: 创建对象的原理
+    // 1. 创建一个空对象
+    // 2. 让空对象的上一级 = 构造函数的上一级
+    //     空对象.__proto__ = F.prototype
+    //     (结果: 在构造函数的prototype中增加属性,
+    //     对象就会有了)
+    // 3. 让构造函数 主动 去给 空对象 打电话
+    //     (结果: 让构造函数内部this 
+    //     指向了该 空对象)
+
+
+    // function Person(name , age){
+    //     this.name = name
+    //     this.age = age
+    //     this.run = function () {
+    //         console.log("**********")
+    //         console.log(this)
+    //     }
+    // }
+
+    // var p1 = new Person("lisi" , 14)
+    // p1.run()
+    // console.log(p1)
+
+
+    // function Person() {
+    //     this.caomei = 12
+    //     console.log(this)
+    // }
+
+
+
+
+
+
+
+
+
+    // var a = {
+    //     "__proto__": Person.prototype
+    // }
+
+    // var a = {}
+    // a.__proto__ = Person.prototype
+
+
+    // function Person() {
+    //     this.name = "老王"
+    // }
+    // Person.prototype.die = "小平"
+
+    // var a = new Person()
+
+    // var a = {}
+    // Person.call(a)
+    // a.__proto__ = Person.prototype
+
+
+
+
+
+
+
+
+
+
+
+    // Person()
+
+    // // 1. 创建一个新对象
+    // var a = {}
+    // // 2. 让新对象的上一级 = 函数的上一级
+    // a.__proto__ = Person.prototype
+    // 3. 新对象 调用 该函数
+    // Person.call(a)
+
+
+
+  
+
+
+
+
+
+    // 原型
+
+    // 对象的上一级  对象.__proto__
+    // 函数的上一级  函数.prototype
+    
+
+    // Person.prototype.weight = "30"
+    // Person.prototype.run = function () {
+    //     console.log(this.name , "running.....")
+    // }
+
+    // var p1 = new Person()
+    // p1.name = "zhangsan"
+    // p1.run()
+    // var p2 = new Person()
+    // p2.name = "lisi"
+    // p2.run()
+
+    // console.log(p2)
+
+
+
+
+
+</script>
+</html>

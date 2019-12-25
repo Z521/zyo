@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 点击事件
+    // 任何一个函数 都会有this
+    // 当一个函数作为元素事件的时候
+    // 该函数内部会多出一个事件对象 event
+
+
+    // 给元素绑定点击事件
+//     1. 在标签上直接写 onclick="xxx(this)"
+//         当标签被点击的时候, (window)去执行xxx()
+//         所以: xxx函数中的this代表window
+//         function (a) {} 中的a 会代表该标签
+//     2. 脚本先获取到元素
+//         给获取到的元素绑定 onclick事件
+//         让给onclick事件绑定到一个函数中
+//         所以: 该函数内部的this代表该元素
+//         只能添加一个监听者函数
+//     3. 脚本先获取到元素
+//         元素.addEventListener("click" , function () {
+//         })
+//         可以添加多个监听者函数
+
+    
+//     capture: 捕获 ↓
+//     Propagation: 冒泡 ↑
+
+//     事件的捕获 和 事件的冒泡
+//     元素.addEventListener("click" , function () {
+
+//     } , useCapture(bool))
+//     useCapture: 是否使用 捕获阶段  默认:false
+//     addEventListener: 默认走冒泡阶段
+//     onclick: 默认走冒泡阶段
+
+//     阻止元素的冒泡
+//     event.stopPropagation()
+
+// 函数
+//     函数要想执行, 一定的调用
+//     函数()---->调用
+//     函数的结果 一定是 return
+//     return : 两个作用
+//         1. 返回函数的结果
+//         2. 提前结束函数
+//     函数的参数 
+//     函数定义的时候: 形参 
+//     函数调用的时候: 实参
+//     函数的嵌套调用
+//     函数做为实参-----> 函数的回调 
+</script>
+</html>

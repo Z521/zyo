@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 600px;
+            border: 1px solid #000;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .shang {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            margin: 0 auto;
+
+            font-size: 200px;
+            text-align: center;
+
+        }
+
+        .kuang {
+            margin-top: 200px;
+            height: 100px;
+            display: flex;
+        }
+
+        .kuai {
+
+            flex: 1;
+            border: 1px solid #000;
+            font-size: 80px;
+            line-height: 100px;
+            text-align: center;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="shang">红</div>
+        <div class="kuang">
+            <div class="kuai">红</div>
+            <div class="kuai">绿</div>
+            <div class="kuai">蓝</div>
+            <div class="kuai">黄</div>
+            <div class="kuai">黑</div>
+        </div>
+
+    </div>
+</body>
+<script>
+    var sahng = document.querySelector(".shang")
+    var kuai = document.querySelectorAll(".kuai")
+
+    var colors = ["red", "green", "blue", "yellow", "black"];
+    var fonts = ["红", "绿", "蓝", "黄", "黑"];
+
+    var xiabiao = ""
+
+
+    shangmian()
+    xiamian()
+
+    function xiamian() {
+        var yanse = cai()
+        var zi = cai()
+        for (var i = 0; i < yanse.length; i++) {
+            kuai[i].style.color = colors[yanse[i]]
+            kuai[i].innerHTML = fonts[zi[i]]
+            kuai[i].fontIndex = zi[i];
+        }
+    }
+    
+    function shangmian() {
+        xiabiao = suiji(0, 4);
+        var ziti = suiji(0, 4);
+        sahng.style.color = colors[xiabiao];
+        sahng.innerHTML = fonts[ziti];
+    }
+
+    // var clickBol = true;
+
+    for (var i = 0;i < kuai.length;i++) {
+        kuai[i].onclick = function () {
+            if (xiabiao == this.fontIndex) {
+                shangmian()
+                xiamian()
+            }
+        }
+
+    }
+
+    function cai() {
+        var data = []
+        while (data.length < 5) {
+            var a = suiji(0, 4)
+            var panding = true
+            for (var i in data) {
+                if (data[i] == a) {
+                    panding = false
+                }
+            }
+            if (panding) {
+                data.push(a)
+            }
+        }
+        return data
+    }
+    function suiji(min, max) {
+        return parseInt(Math.random() * (max - min + 1) + min)
+    }
+</script>
+
+</html>

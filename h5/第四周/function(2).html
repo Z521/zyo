@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    adfasd
+</body>
+<script>
+
+    // 一切皆对象
+    // null 无中生有
+
+    // var ren = {
+    //     name: "zhangsan" , 
+    //     age: 12 , 
+    //     run: function () {
+    //         console.log("使劲.....")
+    //     } , 
+    //     eat: function () {
+    //         console.log("舔.....")
+    //     }
+    // }
+    // console.log(ren.eat())
+    // undefined()
+    // // console.log(xxx.aaa)
+    // // console.log(xxx.aaa())
+
+    // var a = 6
+    // var b = true
+    // var c = function () {
+    //     console.log("77777")
+    // }
+    // c = 7
+    // console.log(a())
+
+    // 具有某一定特定功能的代码块的封装
+    // 1. 定义函数
+    // 2. 调用函数 函数()
+    // 3. 函数一旦被调用, 就会执行函数体
+
+    // 匿名函数
+    // 立即调用函数
+
+    // function aaa() {
+    //     console.log("********")
+    // }
+
+    // (function () {
+    //     console.log("666666")
+    // }())
+
+
+    // console.log("0000000000")
+
+    // bbb()
+
+
+    // function xxx() {
+
+    // }
+
+    // xxx()
+
+    // (function (){
+
+    // }())
+
+    // var a = 8  // number
+    // var b = '7' // string
+    // var c = true // bool/boolean
+    // var d = undefined // undefined 
+    // var e = function () {
+
+    // }
+    // var f = {name: "张三"}
+    // var g = [2 , 4 , 8]
+
+    // console.log(typeof g)
+
+
+    // var ren = {
+    //     name: "zhangan" , 
+    //     age: 12 , 
+    //     run: function () {
+    //         console.log("使劲.....")
+    //     }
+    // }
+
+    // console.log(ren.name)
+
+    // 字面量写法
+    // var a = 7
+    // var a = new Number(7)
+    // var b = "zhangsan"
+    // var b = new String("zhangsan")
+    // console.log(typeof a)
+    // console.log(a.toString())
+
+
+
+    // function xxx() {
+    //     console.log("77777")
+    //     console.log("66666")
+    //     console.log("555555")
+    //     console.log("44444")
+    //     // return "zhangsan"
+    // }
+    // console.log(xxx())
+
+
+    // var a = 5
+    // var a
+    // a = 5
+    // console.log(a)
+    // a = 5
+    // console.log(a)
+
+    // xxx()
+    // // // 函数的声明与定义
+    // function xxx() {
+    //     console.log("1111")
+    // }
+
+    // var a = 6
+    // var a
+    // a = 6
+
+    // 变量的声明前置
+    // var a = 6
+
+    // var a = 6
+    // function xxx() {
+    //     console.log(window.a)
+    //     var a = 7
+    //     console.log(a)
+    // }
+    // xxx()
+    // console.log("********")
+    // console.log(a)
+
+
+    // this 谁调用 谁就是this
+
+    // var a = 7
+    // console.log(a)
+    // console.log(window)
+
+    // var ren = {
+    //     name: "张三" , 
+    //     age: 12 
+    // }
+    // ren.score = 97
+    // console.log(ren.score)
+    // console.log(ren)
+
+    // window.a = 9
+    // var a = 6
+    // var aaa = "zhangsan"
+    // var aaaa = function () {
+    //     console.log(this)
+    //     console.log("*******")
+    // }
+    // window.aaaa()
+
+    // var name = "lisi"
+    // var ren = {
+    //     name: "zhangsan",
+    //     age: 12,
+    //     run: function() {
+    //         console.log(this.name)
+    //         console.log("使劲.....")
+    //     }
+    // }
+
+    // function xxx () {
+    //     console.log(this.name)
+    // }
+
+    // xxx.call(ren)
+
+    
+
+    // ren.xxx()
+
+
+
+    // var a = ren.run
+    // a()
+    // var b = ren.run()
+    // console.log(b)
+    // b.run()
+    // console.log(a.run)
+    // var c = a.run()
+    // var d = a.run
+    // console.log(d)
+    // var e = b.run()
+    // console.log(e)
+    // var f = b.run
+    // console.log(f)
+
+    // push: 推
+    // var a = []
+    // a.push(4)
+    // a.push(6)
+    // a.push(8)
+    // a.push(5)
+    // 数组删除元素: splice
+    // a.splice(1 , 2)
+    // console.log(a)
+
+    // 字符串分割: split
+    // var a = "abcadfbjkladsf"
+    // var b = a.split("x")
+    // console.log(b)
+
+
+    var phone_book = [
+        
+    ]
+    var cao_zuo = ""
+
+    while (cao_zuo != "结束") {
+        cao_zuo = prompt("请输入内容..., 结束-->结束")
+        if (cao_zuo == "结束") {
+            break;
+        } else {
+            var arr = cao_zuo.split(" ") 
+            if (arr[0] == "+") {
+                // 添加
+                var ren = {
+                    name: arr[1],
+                    tel: arr[2]
+                }
+                phone_book.push(ren)
+            } else if (arr[0] == "-") {
+                // 删除
+                var name = arr[1]
+                var xia_biao = " "
+                for (var i = 0; i < phone_book.length; i++) {
+                    if (phone_book[i].name == name) {
+                        xia_biao = i
+                    }
+                }
+                if (i != " ") {
+                    phone_book.splice(xia_biao , 1)
+                }
+                console.log(phone_book)
+            } 
+            else {
+                // 查询
+                for (var i = 0; i < phone_book.length; i++) {
+                    if (phone_book[i].name == arr[1]) {
+                        console.log(phone_book[i].tel)
+                    }
+                }
+            }
+        }
+
+        
+    }
+
+    console.log("代码结束....")
+    
+    // book.push(ren)
+    // console.log(book)
+
+    // var a = prompt("请输入内容...")
+    // console.log(a)
+
+
+</script>
+</html>

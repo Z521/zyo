@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            * {
+            margin: 0;
+            padding: 0;
+
+        }
+        .pubu_wrap {
+            margin: 20px auto;
+            text-align: center;
+            vertical-align: top;
+        }
+
+        .lie {
+            width: 200px;
+            display: inline-block;
+            padding: 5px;
+            text-align: center;
+            vertical-align: top;
+
+        }
+
+        .lie>img {
+            width: 90%;
+            border: 2px solid gold;
+            padding: 4px;
+            background-color: white;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pubu_wrap"></div>
+</body>
+<script src="./jquery.js"></script>
+<script>
+    var pubu_wrap = $(".pubu_wrap")
+    var jiemian = window.innerWidth
+    var lie_w = 200
+    var lie_num = parseInt(jiemian / lie_w)
+    for (var i = 0; i < lie_num; i++) {
+        pubu_wrap.append($(`<div class="lie"></div>`))
+
+    }
+
+
+    
+    var imgs = []
+
+
+    function loaded() {
+        for (var i = 0; i < imgs.length; i++) {
+            var min_h_index = gett()
+            $(".lie").eq(min_h_index).append($(imgs[i]))
+        }
+
+    }
+    function gett() {
+        var xiao_biao = 0
+        var min_height = $(".lie").eq(0).height()
+        $(".lie").each(function (index, item) {
+            if ($(item).height() < min_height) {
+                min_height = $(item).height()
+                xiao_biao = index
+            }
+        })
+
+        return xiao_biao
+
+    }
+
+    for (var i = 1; i < 21; i++) {
+
+        var one_img = new Image()
+        one_img.src = "../tu/" + i + ".jpg"
+
+        one_img.onload = function () {
+            imgs.push(this)
+            if (imgs.length >= 21) {
+                loaded()
+            }
+        }
+    }
+ 
+  
+    window.onresize = function () {
+    
+
+        pubu_wrap.width = window.innerWidth
+        return pubu_wrap.width
+    }
+
+</script>
+
+</html>

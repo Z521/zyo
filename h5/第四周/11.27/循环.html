@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>循环</title>
+</head>
+<body>
+    
+</body>
+<script src="./121.js"></script>
+<script src="./11.js"></script>
+<script>
+    ben = [
+    {
+        name: "张三",
+        dian: 123111
+    },
+    {
+        name: "张",
+        dian: 123
+    }
+
+]
+var caozuo = " "
+while (caozuo != "结束") {
+    caozuo = prompt("请输入")
+    if (caozuo == "结束") {
+        break
+
+    } else {
+        var arr = caozuo.split(" ")
+        if (arr[0] == "+") {
+            jia(arr[1], arr[2])
+        } 
+        else    if (arr[0] == "-") {
+                shan(arr[1])
+
+            }
+        else   {
+            chaxun(arr[1])
+        }
+
+    }
+}
+</script>
+</html>

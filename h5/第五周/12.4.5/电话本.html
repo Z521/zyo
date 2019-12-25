@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .he {
+            width: 400px;
+            height: 700px;
+            border: 1px solid #000;
+            margin: 0 auto;
+            overflow: scroll;
+        }
+
+        .box {
+            width: 100%;
+            /* height: 100px; */
+            background-color: blue;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .left {
+
+
+            flex: 1;
+
+        }
+
+        .avator {
+            width: 100%;
+            height: 0px;
+            padding-bottom: 100%;
+            background-image: url(http://img4.imgtn.bdimg.com/it/u=735342290,3619768368&fm=26&gp=0.jpg);
+            background-size: cover;
+        }
+
+        .right {
+            background-color: burlywood;
+            flex: 3;
+
+        }
+
+        .top {
+            height: 30px;
+            margin: 10px;
+            border: 1px solid rgb(184, 18, 18);
+            line-height: 30px;
+        }
+
+        .boder {
+            height: 30px;
+            margin: 10px;
+            border: 1px solid rgb(184, 18, 18);
+            line-height: 30px;
+
+        }
+
+        .gu {
+            width: 200px;
+            height: 150px;
+            position: fixed;
+            right: 0;
+            bottom: 50%;
+            border: 1px solid #000;
+        }
+
+        .xing {
+            width: 35px;
+        }
+
+        .gu {
+            text-align: center;
+
+        }
+
+        .scrname,
+        .scrtel {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="he">
+
+    </div>
+    <div class="gu">
+        <input type="text" value="姓名：" disabled class="xing"><input class="name" type="text">
+        <input type="text" value="电话：" disabled class="xing"><input class="tel" type="text">
+        <button class="button button1">添加</button>
+        <button class="button button2">删除</button>
+        <button class="button button3">查询</button>
+        <button class="button button4">修改</button>
+        <div class="min_screen"></div>
+    </div>
+
+    </div>
+</body>
+<script src="my_chinese_to_pinyin.js"></script>
+<script>
+    // 小框框
+    var min_screen = document.querySelector(".min_screen")
+    // 名字
+    var name_text = document.querySelector(".name")
+    // 电话
+    var tel_text = document.querySelector(".tel")
+    // 添加
+    var button1 = document.querySelector(".button1")
+    // 删除
+    var button2 = document.querySelector(".button2")
+    // 查询
+    var button3 = document.querySelector(".button3")
+    // 修改
+    var button4 = document.querySelector(".button4")
+
+
+    // 人物界面
+    var contact = document.querySelector(".he")
+
+
+
+
+
+    function zuo_page() {
+        contact.innerHTML = ""
+        var a = ""
+        for (key in data) {
+            data[key] = paixu(data[key])
+            for (index in data[key]) {
+                var ren = data[key][index]
+                a = a + `  <div class="box">
+                            <div class="left">
+                                    <div class="avator"></div>
+                            </div>
+                            <div  class="right">
+                                <div class="top"><span> `+ ren.name + `</span> <span>  -------  ` + key + `</span> </div>
+                                <div class="boder"><span> `+ ren.tel + `</span></div>
+                            </div>
+                        </div>`
+            }
+        }
+
+        contact.innerHTML = a
+    }
+    // zuo_page()
+
+    var data = {
+    
+    }
+    // var data;
+        // 数组转换字符
+    if (localStorage.lu) {
+        data = JSON.parse(localStorage.lu)
+    } else {
+        data = {}
+        localStorage.setItem("lu", JSON.stringify(data))
+    }
+    console.log(localStorage);
+
+    // 添加人点击事件
+    button1.onclick = function () {
+        var name_ = name_text.value
+        var tel_ = tel_text.value
+        add_fn(name_, tel_)
+
+
+    }
+    // 添加人
+    function add_fn(name_, tel_) {
+        // 首字母转换小写
+        var xiaoxie = diao.chinese_to_pinyin(name_)
+        var xiaoxi = xiaoxie.toLowerCase()
+
+        var da = {
+            name: name_,
+            tel: tel_
+        }
+
+        var shou = xiaoxi[0]
+        //  看看 数据中 有没有 该 分组
+        var is_you = false
+        for (key in data) {
+            if (key == shou) {
+                is_you = true
+                data[key].push(da)
+            }
+        }
+
+        if (is_you == false) {
+            data[shou] = [da]
+        }
+        // 4. 重新 做 界面
+
+        zuo_page()
+        localStorage.setItem("lu", JSON.stringify(data))
+    }
+
+    // 查询点击事件
+    button3.onclick = function () {
+        var name_ = name_text.value
+        var ren = chaxun(name_)
+        var str_ = `
+            <div class="scrname">` + ren.name + `</div>
+            <div class="scrtel">` + ren.tel + `</div>
+        `
+        min_screen.innerHTML = str_
+    }
+
+    // 查询
+    function chaxun(name) {
+        var cha = ""
+        for (key in data) {
+            for (i in data[key]) {
+                if (data[key][i].name == name) {
+                    cha = data[key][i]
+                }
+            }
+        }
+        return cha
+        localStorage.setItem("lu", JSON.stringify(data))
+    }
+    // 修改点击事件
+    button4.onclick = function () {
+        var name_ = name_text.value
+        var tel_ = tel_text.value
+        xiu(name_, tel_)
+    }
+    // 修改
+    function xiu(name, tel) {
+        for (key in data) {
+            for (i in data[key]) {
+                if (data[key][i].name == name) {
+                    data[key][i].tel = tel
+                }
+            }
+        }
+        zuo_page()
+        localStorage.setItem("lu", JSON.stringify(data))
+    }
+    // // 删除
+    button2.onclick = function () {
+        var name_ = name_text.value
+        shan(name_)
+    }
+    // 删除
+    function shan(name) {
+        var fenzu = ""
+        var xiabiao = ""
+        for (key in data) {
+            for (i in data[key]) {
+                if (data[key][i].name == name) {
+                    fenzu = key
+                    xiabiao = i
+                }
+            }
+        }
+        data[fenzu].splice(xiabiao, 1)
+        zuo_page()
+        localStorage.setItem("lu", JSON.stringify(data))
+    }
+    zuo_page()
+    function paixu(a) {
+        for(var i = 0; i< a.length - 1;i++){
+        for (var j = 0; j < a.length - 1 - i ; j++) {
+           var  aming = diao.chinese_to_pinyin(a[j].name)
+           var  amingg = diao.chinese_to_pinyin(a[j + 1].name)
+
+           if ( aming > amingg) {
+               var ddd = a[j ]
+                a[j ] = a[j + 1]
+                a[j + 1] = ddd
+           }
+            
+        }
+        
+    }
+    return a 
+    }0
+    
+</script>
+
+</html>

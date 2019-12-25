@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .a{
+            width: 200px;
+            height: 200px;
+            /* background-image: url(../images/huge.jpg); */
+            /* background-repeat: repeat-x;横向重复 */
+
+            /* background-size: contain;背景尺寸 */
+            background: linear-gradient( red 50% , rgb(107, 189, 142) 50% );
+            background-size: 100px 50px;
+            /* background: linear-gradient( deg , red 50% , rgb(107, 189, 142) 50% ); 线性渐变*/
+        }
+        .s{
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background: linear-gradient( to right , red 25% ,rgb(5, 136, 141) 0 , rgb(5, 136, 141) 50% ,
+                                               rgb(238, 5, 149) 0 , rgb(238, 5, 149) 75% ,
+                                               rgb(117, 0, 250) 0 , rgb(117, 0, 250)100%
+                                             );
+            background-size: 80px 80px;
+        }
+        .d{
+            width: 200px;
+            height: 200px;
+            border-radius: 100px;
+            background: radial-gradient(rgb(0, 0, 0) 15%  , rgb(197, 11, 11) 0 , rgb(197, 11, 11) 30% ,
+             rgb(8, 124, 190) 0 , rgb(8, 124, 190) 60% ,
+              rgb(71, 8, 187) 0,
+             rgb(71, 8, 187) 80% );
+        }
+        .f{
+            width: 200px;
+            height: 200px;
+            
+            background-image: linear-gradient( to right , rgba(255, 255, 255, 0.3) 50% , rgba(5, 136, 141 , 0.3) 50%) ,
+                         linear-gradient( rgba(255, 255, 255,0.3) 50% , rgba(5, 136, 141, 0.3) 50% );
+            background-size: 20px 20px;
+            
+            background-repeat: repeat;
+            border: 1px solid rgb(131, 130, 130);
+            margin: 0 auto;
+            
+
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="a"></div>
+    <div class="s"></div>
+    <div class="d"></div>
+    <div class="f"></div>
+    
+</body>
+</html>

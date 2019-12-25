@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .tu {
+            position: relative;
+        }
+
+        .cc {
+            width: 200px;
+            height: 150px;
+            /* transform: translate(100%,100%); */
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: cc 5s linear 0s 1;
+        }
+
+        .xx {
+            position: relative;
+            left: 40%;
+            top: 60px;
+        }
+
+        
+
+        @keyframes cc {
+            0% {
+                transform: translate(10%, 10%);
+                display: none;
+            }
+
+            15% {
+                transform: translate(100%, 300%);
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tu">
+        <img class="cc" src="../images/1112.jpg" alt="">
+        <img class="xx" src="../images/下载.jfif" alt="">
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .contact {
+            width: 320px;
+            height: 480px;
+            border: 1px solid black;
+            margin: 0 auto;
+            overflow: scroll;
+            padding: 0 10px;
+        }
+
+        .options {
+            width: 150px;
+            height: 200px;
+            /* 固定到窗口上 */
+            position: fixed;
+            right: 0px;
+            top: 0px;
+            bottom: 0px;
+            margin: auto 0;
+        }
+
+        .min_screen {
+            width: 100%;
+            height: 50px;
+        }
+
+        /* 通讯录区域的样式 */
+        .row {
+            width: 100%;
+            display: flex;
+            margin: 8px 0px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* .row>div{ */
+        /* height: 100px; */
+        /* } */
+        .row_l {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .row_r {
+            flex: 5;
+            padding: 2px 4px;
+            border-bottom: 0.5px solid #aaa;
+        }
+
+        .avator {
+            width: 100%;
+            height: 0px;
+            padding-bottom: 100%;
+            border: 0.5px solid gold;
+            background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1575346040385&di=5e36ffca3cce1488a08a881e04503c5c&imgtype=0&src=http%3A%2F%2Fu.thsi.cn%2F2011%2F11%2F24%2F114302807_1322097823_-1408237429_d2000e3f9255a7e3.jpg);
+            background-size: cover;
+            border-radius: 8px;
+        }
+
+        .con_name,
+        .con_tel {
+            padding-left: 5px;
+        }
+
+        /* 小屏幕 样式 */
+        .min_name {
+            color: purple;
+        }
+
+        .min_tel {
+            color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contact">
+
+    </div>
+    <div class="options">
+        <input type="text" class="user_name" placeholder="姓名">
+        <input type="text" class="tel_phone" placeholder="电话">
+
+        <button class="add_btn">添加</button>
+        <button class="sel_btn">查询</button>
+        <button class="del_btn">删除</button>
+        <button class="modi_btn">修改</button>
+        <div class="min_screen"></div>
+    </div>
+</body>
+<script>
+    // 小屏幕
+    var min_screen = document.querySelector(".min_screen")
+
+    // 2个输入框
+    var name_text = document.querySelector(".user_name")
+    var tel_text = document.querySelector(".tel_phone")
+
+    // 四个按钮
+    // 添加按钮
+    var add_btn = document.querySelector(".add_btn")
+    // 查询按钮
+    var sel_btn = document.querySelector(".sel_btn")
+    // 删除按钮
+    var del_btn = document.querySelector(".del_btn")
+    // 修改按钮
+    var modi_btn = document.querySelector(".modi_btn")
+
+    var contact = document.querySelector(".contact")
+    // var row = `<div class="row">
+    //         <div class="row_l">
+    //             <div class="avator"></div>
+    //         </div>
+    //         <div class="row_r">
+    //             <div class="con_name">zhangsan</div>
+    //             <div class="con_tel">1234567890</div>
+    //         </div>
+    //     </div>`
+
+    var people = [
+        {
+            name: "张三",
+            tel: "23456789"
+        },
+        {
+            name: "李四",
+            tel: "98765432"
+        }
+    ]
+
+    // 画界面
+    function zuo_page() {
+        contact.innerHTML = ""
+        var a = ""
+        for (var i = 0; i < people.length; i++) {
+            var ren = people[i]
+            a = a + `<div class="row">
+                <div class="row_l">
+                    <div class="avator"></div>
+                </div>
+                <div class="row_r">
+                    <div class="con_name">`+ ren.name + `</div>
+                    <div class="con_tel">`+ ren.tel + `</div>
+                </div>
+            </div>`
+        }
+        contact.innerHTML = a
+    }
+
+    zuo_page()
+
+
+    // 4个按钮的点击事件
+    // 添加按钮点击事件
+    add_btn.onclick = function () {
+        // 获取 姓名 输入框的 值
+        var name_ = name_text.value
+        // 获取 tel 输入框的 值
+        var tel_ = tel_text.value
+
+        // 调用添加新人的方法,
+        // 顺便把 姓名 和 电话号码 传过去
+        add_fn(name_, tel_)
+
+    }
+    // 查询按钮点击事件
+    sel_btn.onclick = function () {
+        // 1. 从输入框中获取要 查询 的人的 姓名
+        var name_ = name_text.value
+        // 2. 根据姓名 把 人 给 查出来
+        var ren = get_ren_by_name(name_)
+        // 3. 让 人 显示到 小屏幕上
+        display_detail(ren)
+    }
+    // 删除按钮点击事件
+    del_btn.onclick = function () {
+        // 1. 从输入框中获取要删除的人的 姓名
+        var name_ = name_text.value
+        // 2. 根据该 姓名 得到其 下标
+        var index_ = get_index_by_name(name_)
+        // 3. 带着下标 index_ , 去调用删除 方法
+        del_fn(index_)
+    }
+    // 修改按钮点击事件
+    modi_btn.onclick = function () {
+        // 1. 从输入框中获取要 修改 的人的 姓名 和 电话号码
+        var name_ = name_text.value
+        var tel_ = tel_text.value
+        // 2. 把 得到的 姓名 和 电话号码 传给 修改方法
+        modify_fn(name_, tel_)
+    }
+
+    // 添加新人
+    function add_fn(name, tel) {
+        var temp_dic = {
+            name: name,
+            tel: tel
+        }
+        people.push(temp_dic)
+        zuo_page()
+    }
+
+    // 删除新人
+    function del_fn(index) {
+        people.splice(index, 1)
+        zuo_page()
+        console.log("6秒. .......")
+    }
+
+    // 根据姓名获取下标
+    function get_index_by_name(name) {
+        for (var i = 0; i < people.length; i++) {
+            if (people[i].name == name) {
+                return i
+            }
+        }
+    }
+
+    // 根据 name 查出来 ren 
+    function get_ren_by_name(name) {
+        for (var i = 0; i < people.length; i++) {
+            if (people[i].name == name) {
+                return people[i]
+            }
+        }
+    }
+
+
+    // 把 人 显示到 小屏幕 上
+    function display_detail(ren) {
+        // 1. 准备临时字符串 temp_str
+        var temp_str = `
+            <div class="min_name">` + ren.name + `</div>
+            <div class="min_tel">` + ren.tel + `</div>
+        `
+        // 2. 先把 小屏幕 中的内容 清理干净
+        min_screen.innerHTML = ""
+        // 2. 再填充到 小屏幕 中
+        min_screen.innerHTML = temp_str
+    }
+
+    // 修改方法
+    function modify_fn(name, tel) {
+        for (var i = 0; i < people.length; i++) {
+            if (people[i].name == name) {
+                people[i].tel = tel
+                zuo_page()
+                return
+            }
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .game{
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            border: 1px solid black;
+            position: relative;
+        }
+        .qiu{
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="game">
+
+    </div>
+    
+</body>
+
+<script>
+    // create: // 创建
+    // append: 拼接
+    // child: 孩子
+    // var game = document.getElementsByClassName("game")[0]
+
+    // var div_ele = document.createElement("div")
+    // div_ele.className = "qiu"
+    // game.appendChild(div_ele)
+    // var r = my_random(0 , 255)
+    // var g = my_random(0 , 255)
+    // var b = my_random(0 , 255)
+    // div_ele.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")"
+
+    // function my_random(min , max) {
+    //     var a = parseInt(Math.random() * (max - min + 1)) + min
+    //     return a
+    // }
+
+
+    
+
+
+    // Math: 数学
+    // random: 随机
+    // var a = Math.random()
+    // console.log(a)
+
+    // 67 ~  98
+    // Math.random() 
+    // 0  ~   0.9999
+    // * 32
+    // 0    ~   31.999999
+    // 取整
+    // 0   ~   31
+    // +  67
+    // 67   ~   98
+    
+
+
+
+    // Math.random()  0 ~ 0.999
+    // * n+1
+    //                 0  ~ n.999
+    // parseInt()取整
+    //                 0  ~  n
+    // + m
+    //                 m  ~  n+m
+
+
+
+
+    // 第二部分
+    // client: 客户端
+    // clientWidth: 内容宽度
+    // offsetWidth: 内容宽度 + 边框宽度
+    var game = document.getElementsByClassName("game")[0]
+    var lanzi = []
+
+    function create_one_qiu(speed){
+        var qiu = document.createElement("div")
+        
+        qiu.className = "qiu"
+        qiu.bian = my_random(20 , 80)
+        // qiu.style.backgroundImage = "url(./111.jpg)"
+        // qiu.style.backgroundSize = "cover"
+        qiu.style.left = my_random(0 , game.clientWidth - qiu.bian) + "px"
+        qiu.style.top = my_random(0 , game.clientHeight - qiu.bian) + "px"
+        qiu.speed = speed
+        qiu.style.width = qiu.bian + "px"
+        qiu.style.height = qiu.bian + "px"
+        game.appendChild(qiu)
+        
+        // qiu.dir_x = my_random(1 , 10) % 2 == 0 ? "you" : "zuo"
+        // qiu.dir_y = my_random(1 , 10) % 2 == 0 ? "xia" : "shang"
+        qiu.move = function () {
+            if (qiu.offsetLeft >= game.clientWidth - qiu.bian)
+             {
+                qiu.dir_x = "zuo"
+            //     var r = my_random(0 , 255)
+            //     var g = my_random(0 , 255)
+            //     var b = my_random(0 , 255)
+            //     game.style.border = my_random(1 , 4) + "px solid " + "rgb(" + r + "," + g + "," + b + ")"
+        
+            } 
+            else if (qiu.offsetLeft <= 0) {
+                qiu.dir_x = "you"
+            }
+
+            if (qiu.dir_x == "you") {
+                qiu.style.left = qiu.offsetLeft + qiu.speed + "px"
+            } else {
+                qiu.style.left = qiu.offsetLeft - qiu.speed + "px"
+            }
+
+
+
+            if (qiu.offsetTop >= game.clientHeight - qiu.bian) {
+                qiu.dir_y = "shang"
+            } else if (qiu.offsetTop <= 0) {
+                qiu.dir_y = "xia"
+            }
+
+            if (qiu.dir_y == "xia") {
+                qiu.style.top = qiu.offsetTop + qiu.speed + "px"
+            } else {
+                qiu.style.top = qiu.offsetTop - qiu.speed + "px"
+            }
+
+            var r = my_random(0 , 255)
+            var g = my_random(0 , 255)
+            var b = my_random(0 , 255)
+            qiu.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")"
+        }
+        return qiu
+    }
+
+    for (var i = 0; i < 10; i++) {
+        var a = create_one_qiu(my_random(3 , 13))
+        lanzi.push(a)
+    }
+    
+    
+    // 随机函数
+    function my_random(min , max) {
+        var a = parseInt(Math.random() * (max - min + 1)) + min
+        return a
+    }
+
+    setInterval(function () {
+        for (var i = 0; i < lanzi.length; i++) {
+            lanzi[i].move()
+        }
+    }, 100);
+
+
+</script>
+</html>

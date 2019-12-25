@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>问卷</title>
+    <style>
+        body{
+            background: rgb(4, 133, 238);
+        }
+    .d{
+        border: 1px solid black;
+            background-color: white;
+            width: 50%;
+            margin: 0 auto;
+    }
+    .a{
+        text-decoration: underline;
+    }
+    .s{
+        text-align: center;
+    }
+    .f{
+        /* text-align:right;  */
+        /* text-decoration: underline; */
+        float: right;
+    
+    }
+    </style>
+</head>
+<body>
+    <div  class="d" >
+           
+            <h1  align="center" >HTML5的调查问卷</h1>
+            <div class="a" >
+               姓名： <input type="text" placeholder="请输入你的名字">
+               <span class="f" >
+                    性别:
+               <input type="radio" id="o" name="nan" value="o" checked ><label for="o">男</label>
+               <input type="radio" id="p" name="nan" value="p" > <label for="p">女</label>
+               </span>
+              
+             
+            </div  >
+            <div class="s" >
+                   
+                 <div >
+                         <span>Q1:你知道html5（h5）吗？
+
+                 </span>
+                <div>
+                  
+                    <input type="radio" id="o"  name="aaa" value="o" checked ><label for="o">知道</label><br>
+                    <input type="radio" id="s" name="aaa"  value="s" ><label for="s">不知道</label><br>
+
+
+                </div>
+            
+            </div>
+            <div>
+                    <form  action="">
+                <span>Q2:你玩过哪些H5游戏？（多选）</span>
+                <div>
+                    <input type="checkbox" id="1" value="wan "><label for="1">游戏一</label><br>
+                    <input type="checkbox" id="2"><label for="2">游戏二</label><br>
+                    <input type="checkbox" id="3"><label for="3">游戏三</label><br>
+                    <input type="checkbox" id="4"><label for="4">游戏四</label><br>
+                </div>
+            </div>
+     
+            <div>
+                <span>Q3：h5是否会成为大势所趋？</span>
+                <div>
+                    <select multiple size="3" >
+                            <option   value="hui">会</option>
+                            <option value="buhui">不会</option>
+                            <option selected="" value="ke">可能会</option>
+                            <option value="ke" >不一定会</option>
+                        
+                        
+    
+    
+                    </select>
+                </div>
+    
+    
+            </div>
+            <div>
+                <span>Q4:谈谈你对h5的理解</span>
+                <div>
+                    <textarea  cols="40" rows="20"></textarea>
+                </div>
+            </div>
+        <div>
+            <input type="submit" name="ti"  提交>
+        </div>
+
+    </div>
+   
+</body>
+</html>

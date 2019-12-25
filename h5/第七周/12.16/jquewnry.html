@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+
+            width: 100%;
+            border: 1px solid black;
+
+        }
+
+        img {
+            width: 60px;
+            height: 60px;
+            margin: 5px 0;
+        }
+
+        .kuang {
+            height: 70px;
+            line-height: 70px;
+            border: 1px solid #000;
+
+            /* float: left; */
+            display: flex;
+            justify-content: space-around;
+
+        }
+
+        .input {
+            width: 80px;
+        }
+
+        .da {
+            width: 50px;
+        }
+        .quan1{
+            float: right;
+            margin-right: 115px;
+        }
+        .quan{
+            float: left;
+            margin: 0 7%;
+        }
+       
+
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="kuang">
+            <div><input type="checkbox"> </div>
+            <div class="da">图片</div>
+            <div>商品名称</div>
+            <div>单价</div>
+            <div>数量</div>
+            <div class="input">总价</div>
+        </div>
+
+
+        <div class="kuang">
+            <div><input type="checkbox"></div>
+            <img src="./1.0.jpg" alt="">
+
+            <div>豆浆机</div>
+            <div>599</div>
+            <div class="button">
+                <button>-</button>
+                <button>1</button>
+                <button>+</button>
+            </div>
+            <div><input class="input" type="text"></div>
+        </div>
+
+        <div class="kuang">
+            <div><input type="checkbox"></div>
+            <img src="./2.0.jpg" alt="">
+            <div>电脑主机</div>
+            <div>1689</div>
+            <div class="button">
+                <button>-</button>
+                <button>1</button>
+                <button>+</button>
+            </div>
+            <div><input class="input" type="text"></div>
+        </div>
+
+        <div class="kuang">
+            <div><input type="checkbox"></div>
+            <img src="./3.0.jpg" alt="">
+            <div>数码相机</div>
+            <div>3999</div>
+            <div class="button">
+                <button>-</button>
+                <button>1</button>
+                <button>+</button>
+            </div>
+            <div><input class="input" type="text"></div>
+        </div>
+
+        <div class="kuang">
+            <div><input type="checkbox"></div>
+            <img src="./4.0.jpg" alt="">
+            <div>音响</div>
+            <div>299</div>
+            <div class="button">
+                <button>-</button>
+                <button>1</button>
+                <button>+</button>
+            </div>
+            <div><input class="input" type="text"></div>
+        </div>
+
+        <div class="kuang">
+            <div><input type="checkbox"></div>
+            <img src="./5.0.png" alt="">
+            <div>手机</div>
+            <div>2998</div>
+            <div class="button">
+                <button>-</button>
+                <button>1</button>
+                <button>+</button>
+            </div>
+            <div><input class="input" type="text"></div>
+        </div>
+        <div style="border:1px solid black ;
+        height: 50px;">
+            <div class="quan" ><input type="checkbox"></div>
+            <div class="quan1">总价 <input class="input"type="text"></div>
+        </div>
+
+
+    </div>
+    
+</body>
+<script src="../../jquery.js"></script>
+<script>
+var aaa = $(this).parent(".button")
+var bbb = aaa.find("button").eq(0)
+var ccc = aaa.find("button").eq(1)
+aaa.find("input").eq(2).val((bbb.val() - 0 )*(ccc.val() - 0))
+</script>
+
+</html>

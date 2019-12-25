@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <audio class="bofangqi" src="" controls></audio>
+    <input type="text" name="" id="" class="geming">
+    <button onclick="sousuo()" class="search">搜索</button>
+    <div class="wrap">
+            <ul>
+                
+            </ul>
+    </div> 
+</body>
+
+<script>
+    var bofangqi = document.querySelector(".bofangqi")
+    var url = "http://192.168.61.143:3000/search?word="
+    var xiangqing = "http://192.168.61.143:3000/xiangqing?fileHash="
+    var geming = document.querySelector(".geming")
+
+    function sousuo() {
+        var key = geming.value
+        console.log(key)
+        var sou_url = url + key
+        get_list(sou_url)
+    }
+
+    var my_ul = document.querySelector(".wrap ul")
+
+    function my_qingqiu(a , b) {
+        var req = new XMLHttpRequest()
+        req.open("GET" , a , true)
+        req.send()
+        req.onreadystatechange = function () {
+            if (req.readyState == 4 && req.status == 200) {
+                b(req.responseText)
+            }
+        }
+    }
+
+
+    function get_list(x){
+        my_qingqiu(x , function (res) {
+            var musics = JSON.parse(res).data.lists
+            console.log(musics)
+            var aaa = ""
+            for (var i in musics) {
+                // musics[i]
+                aaa += `<li>
+                    歌名: ` + musics[i].OriSongName + `
+                    歌手: ` + musics[i].SingerName + `
+                    <button onclick="xxx(this)" hash="` + musics[i].FileHash + `">播放</button>
+                </li>`
+            }
+
+            my_ul.innerHTML = aaa
+        })
+    }
+
+    function xxx(btn) {
+        var hash = btn.getAttribute("hash")
+        var zongji_url = xiangqing + hash
+        my_qingqiu(zongji_url , function (res) {
+            var data = JSON.parse(res)
+            var mp3 = data.data.play_url
+            console.log(mp3)
+            bofangqi.src = mp3
+        })
+    }
+
+
+    
+</script>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .f {
+            width: 400px;
+            height: 400px;
+            /* background: yellow  ; */
+            background-image: linear-gradient(rgb(70, 27, 27) 2px , transparent 0),
+                linear-gradient(to right, rgb(43, 9, 107) 2px , transparent 0),
+                linear-gradient(rgb(17, 228, 62) 1px , transparent 0),
+                linear-gradient(to right, rgb(235, 10, 167) 1px  , transparent 0);
+
+
+            background-repeat: repeat;
+            border: 1px solid rgb(131, 130, 130);
+            margin: 0 auto;
+            background-size: 75px 75px, 75px 75px, 15px 15px, 15px 15px;
+        }
+        .d{
+            width: 400px;
+            height: 400px;
+            
+            background-image: linear-gradient( to right , rgba(255, 255, 255, 0.3) 50% , rgba(5, 136, 141 , 0.3) 50%) ,
+                         linear-gradient( rgba(255, 255, 255,0.3) 50% , rgba(5, 136, 141, 0.3) 50% ),
+                         url(../images/huge.jpg)
+                         ;
+            background-size: 40px 40px,40px 40px, cover ;
+            
+            background-repeat: repeat;
+            /* border: 1px solid rgb(131, 130, 130); */
+            margin: 0 auto;
+         
+            
+        }
+        .a{         
+            margin: 0 auto;
+            width: 260px;
+            height: 260px;
+            /* visibility: hidden; */
+            /* background: transparent; */
+            animation: aaa 3s linear 0s 1 ;
+            
+        }
+
+        @keyframes aaa {
+            0% {
+                transform:  scale(2, 1);
+            }
+
+            50%{
+                transform: scale(1, 1)  scale(1, 1);
+                /* visibility: visible; */
+            }
+            100%{
+                transform:scale(2, 2) scale(2, 2);
+                /* visibility: visible; */
+            }
+        }
+        .x {
+            width: 400px;
+            height: 400px;
+            /* background: yellow  ; */
+            background-image: radial-gradient(rgb(0, 255, 0) 5px , transparent 0),
+                              radial-gradient( rgb(43, 9, 107) 5px , transparent 0);
+            /* background-repeat: no-repeat ; */
+            background-repeat: repeat ;
+            /* border: 1px solid rgb(131, 130, 130); */
+            margin: 0 auto;
+            background-size: 40px 40px;
+            background-position: 0px 0px, 20px 20px ;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="f"></div>
+    <div class="d">
+        <div class="a">
+            <div class="z">    <h1>题龙阳县青草湖</h1>           </div>
+            <div class="z">   <h4> 【作者】唐温如 【朝代】元 </h4> </div>
+            <div class="z">西风吹老洞庭波，一夜湘君白发多。</div>
+            <div class="z">醉后不知天在水，满船清梦压星河。</div>
+            
+            
+        </div>
+    </div>
+    <div class="x"></div>
+</body>
+
+</html>

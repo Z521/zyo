@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .game {
+            width: 1000px;
+            height: 500px;
+            border: 1px solid #000;
+            position: relative;
+        }
+
+        .qiu {
+            /* width: 50px;
+            height: 50px; */
+            position: absolute;
+            border-radius: 50%;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="game"></div>
+</body>
+<script>
+    var game = document.getElementsByClassName("game")[0]
+    var qiu = document.createElement("div")
+    qiu.className = "qiu"
+    yanse()
+  
+    qiu.bian = my_random(20, 200)
+    qiu.style.width = qiu.bian + "px"
+    qiu.style.height = qiu.bian + "px"
+    function yanse() {
+        game.appendChild(qiu)
+        var r = shu(0, 255)
+        var g = shu(0, 255)
+        var b = shu(0, 255)
+        qiu.style.backgroundColor = "rgb(" + r + " , " + g + " , " + b + ") "
+    }
+    function shu(xiao, da) {
+        var a = parseInt(Math.random() * (da - xiao + 1)) + xiao
+        return a
+    }
+    function my_random(min, max) {
+        var a = parseInt(Math.random() * (max - min + 1)) + min
+        return a
+    }
+
+
+//     function heng(qiu, b) {
+
+//    if (qiu.offsetLeft >= 500) {
+//        qiu.x = "zuo"
+//    } else if (qiu.offsetLeft <= 0) {
+//        qiu.x = "you"
+//    }
+
+
+
+//    if (qiu.x == "you") {
+//        qiu.style.left = qiu.offsetLeft + b + "px"
+//    } else {
+//        qiu.style.left = qiu.offsetLeft - b + "px"
+//    }
+// }
+// function zong(qiu, b) {
+
+//    if (qiu.offsetTop >= 600) {
+//        qiu.y = "fan"
+//    } else if (qiu.offsetTop <= 0) {
+//        qiu.y = "top"
+//    }
+
+
+//    if (qiu.y == "top") {
+//        qiu.style.top = qiu.offsetTop + b + "px"
+//    } else {
+//        qiu.style.top = qiu.offsetTop - b + "px"
+//    }
+
+// }
+// function yidong(qiu, c) {
+//    heng(qiu, c)
+//    zong(qiu, c)
+// }
+// setInterval(
+//    function () {
+
+//        if (!qiu.x) {
+//            qiu.x = "you"
+//            qiu.y = "top"
+
+//        }
+
+//        yidong(qiu[0], 35)
+
+//    }, 100)
+</script>
+
+
+</html>

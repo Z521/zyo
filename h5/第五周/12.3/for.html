@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="shu">
+        
+    </div>
+</body>
+<script>
+    // var a = document.getAnimations(".shu")
+    // var book = { }
+    // var ren = {
+    //     name: "housiyu",
+    //     age: 18
+    // }
+    // var ren2 = {
+    //     name: "sunhuajian",
+    //     age: 21
+    // }
+    // var ren3 = {
+    //     name: "zhengjinpeng",
+    //     age: 14
+    // }
+    // var ren4 = {
+    //     name: "sunwukong",
+    //     age: 500
+    // }
+    // function tui_ren(ren) {
+    //     var shou_zm = ren.name[0]
+
+    //     var is_you_h = false
+    //     for (a in book) {
+    //         if (a == shou_zm) {
+    //             is_you_h = true
+    //         }
+    //     }
+    //     if (is_you_h == false) {
+    //         // 没有h分组
+    //         book[shou_zm] = [ren]
+    //     } else {
+    //         // 有h分组
+    //         book[shou_zm].push(ren)
+    //     }
+    // }
+    // tui_ren(ren)
+    // tui_ren(ren2)
+    // tui_ren(ren3)
+    // tui_ren(ren4)
+    // console.log(book);
+    var a = document.querySelector(".shu")
+       
+
+    var book = {}
+    var ren = {
+        name: "张三",
+        tel: "12233"
+    }
+    var ren1 = {
+        name: "张",
+        tel: "12233"
+    }
+    var ren2 = {
+        name: "三",
+        tel: "12233"
+    }
+    function tui(ren) {
+        var shou = ren.name[0]
+        var zimu = false
+        for (i in book) {
+            if (i == shou) {
+                zimu = true
+            }
+        }
+        if (zimu == false) {
+            book[shou] = [ren]
+        } else {
+            book[shou].push(ren)
+        }
+    }
+    tui(ren)
+    tui(ren1)
+    tui(ren2)
+    console.log(book);
+    
+   
+    // book = {}
+    // var ren = {
+    //     name: "san",
+    //     bel: "123"
+
+    // }
+    // function da(ren) {
+    //     var yi = ren.name[0]
+    //     var zhen = false
+    //     for (i in book) {
+    //         if (i == yi) {
+    //             zhen = true
+    //         }
+    //     }
+    //     if (zhen == false) {
+    //         book[yi] = [ren]
+    //     } else {
+    //         book[yi].push(ren)
+    //     }
+
+    // }
+
+    // function ren() {
+    //     var ling = ren.name[0]
+    //     var zhen = false
+    //     for(i in book){
+    //         if (i == ling) {
+    //             zhen =true
+    //         }
+    //     }
+    //     if (zhen == false) {
+    //         book[ling] = [ren]
+    //     }else{
+    //         book[ling].push(ren)
+    //     }
+    // }
+</script>
+
+</html>

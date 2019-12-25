@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 70%;
+            margin: 0 auto;
+        }
+        ul {
+            list-style:none ; 
+        }
+        li {
+            border: 1px solid #000; 
+            display: flex;
+            justify-content: space-between ;
+        }    
+        .span{
+            width: 300px;
+          
+            position: relative;
+            bottom: -50px; 
+        }
+        .yi{
+            margin-left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+        <ul >
+
+        </ul>
+
+    </div>
+</body>
+<script src="歌曲.js"></script>
+<script>
+    var jie = document.querySelector(".box ul")
+    var a = JSON.parse(aaa)
+    var shuju = a.data.list
+    var b = ""
+    // span.style.marginRight = 50 + "px"
+    for (i in shuju) {
+        b += `
+            <li> <span class="span   yi" >歌名：` + shuju[i].name + `</span> 
+                <span class="span  er">歌手：` + shuju[i].artist + `</span> 
+                <span class="span  si ">  <button  >播放</button><button  >暂停</button></span> 
+                <span class="spa  er"><img   src = " `+ shuju[i].pic120 + `"</span> 
+               
+                     </li>   
+        `
+        console.log(shuju);
+    }
+    
+    jie.innerHTML = b
+</script>
+
+</html>

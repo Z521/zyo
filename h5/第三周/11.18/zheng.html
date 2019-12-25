@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      
+        body:hover .he {
+            transform: translate(500px, 500px);
+        }
+
+        .he {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            left: 100px;
+            top: 200px;
+            /* transform: rotate(50deg); */
+            /* perspective: 1000px; */
+            transform-style: preserve-3d;
+            /* transition: all 2s; */
+            animation: aa 10s linear 0s infinite;
+        }
+
+        @keyframes aa {
+            0% {
+                transform: rotatey(180deg) rotatex(180deg);
+            }
+
+            100% {
+                transform: rotatey(1800deg) rotatex(1800deg);
+            }
+        }
+
+
+
+        .he>div {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .s {
+            background-color: rgba(255, 150, 0, 0.3);
+            transform: translateY(-100px) rotateX(-90deg) ;
+        }
+
+        .x {
+            background-color: rgba(0, 100, 255, 0.3);
+            transform: translateY(100px) rotateX(90deg) ;
+        }
+        .q {
+            background-color: rgba(0, 255, 0, 0.3);
+            transform: translateZ(100px);
+
+        }
+
+        .h {
+            background-color: rgba(255, 25, 25, 0.3);
+            transform: translateZ(-100px);
+            
+        }
+
+        .z {
+            background-color: rgba(100, 2, 0, 0.3);
+            transform: rotateY(90deg) translateZ(100px);
+        }
+
+        .y {
+            background-color: rgba(100, 100, 200, 0.3);
+            transform: rotateY(90deg) translateZ(-100px);
+        }
+
+       
+    </style>
+</head>
+
+<body>
+    <div class="he">
+        <div class="s"></div>
+        <div class="x"></div>
+        <div class="z"></div>
+        <div class="y"></div>
+        <div class="h"></div>
+        <div class="q"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .game{
+            width: 100%;
+            height: 90vh;
+            background-color: #aaa;
+            border: 1px solid black;
+            position: relative;
+        }
+        .tanke{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            bottom: 0px;
+            font-size: 30px;
+            color: white;
+            text-align: center;
+        }
+        .tanke1{
+            /* background-color: red; */
+            background-image: url(./tanke1.png);
+            background-size: cover;
+        }
+        .tanke2{
+            background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1576232520571&di=a3f480ecd3820b304e5b5ed11fab4810&imgtype=0&src=http%3A%2F%2Fimg.aso.aizhan.com%2Ficon%2Fa5%2Ff0%2F56%2Fa5f0561b24478b1c29b12ca535e86658.jpg);
+            background-position: -97px 0;
+            background-size: cover;
+        }
+        .zidan{
+            width: 4px;
+            height: 20px;
+            border-top-left-radius: 50%;
+            border-top-right-radius: 50%;
+            position: absolute;
+            background-color: white;
+            border: 0.4px solid gold;
+        }
+    </style>
+</head>
+<body>
+   <div class="game">
+       <!-- <div class="tanke tanke1">11</div>
+       <div class="tanke tanke2">22</div> -->
+   </div>
+</body>
+
+<script>
+    // 1. 准备坦克创建的构造函数 Create_tanke()
+    // 2. 丰富构造函数
+    //     2.1 增加名称属性 name
+    //     2.2 增加元素属性 ele
+    //         2.2.1 给给元素设置 类名 tanke tanke1
+    //     2.3 增加死亡状态属性 is_die ---> false
+    //     2.4 增加是否在屏幕上的状态属性 is_in_game  ---> false
+    //     2.5 增加生命值属性 life  --> 3
+    //     2.6 增加速度属性 speed --> 1
+    //     2.7 增加方向属性 direction --> up
+    //     2.8 增加位置坐标属性 pos{x:0 , y:0}
+    //     2.9 增加移动方法 move()
+    //     2.10 增加发射子弹方法 fire()
+    //     2.11 增加绘制到界面的方法 draw()
+    //     2.12 增加死亡方法 die()
+    // 3. 通过坦克构造函数, 创建两个坦克对象(带着名字创建)
+    // 4. 让两个坦克绘制到界面上
+    // 5. 监听键盘按下去事件
+    // 6. 让坦克的坐标生效
+    // 7. 增加控制整个游戏的定时器 game_timer
+    // 8. 给坦克增加一个is_an 属性
+        // 8.1 用来表示, 是否按下键盘上的按键
+    // 9. 键盘按下去的时候 
+    //  9.1 如果是 wsad 让tanke1.is_an = true
+    //  9.1 如果是 上下左右键 让 tanke2.is_an = true
+    // 10. 在坦克 move 中, 增加一个判断
+    //  10.1 如果this.is_an == true
+    //      就执行该move方法
+    // 11. 在键盘按下的那一瞬间 改变坦克的方向
+    // 12. 让tanke的move方法 , 按照既定的方向进行移动
+    //  12.1 修改坦克的坐标, 让坦克通过js 达到屏幕底部位置
+    //  12.2 修改 draw 坦克方法, 坦克按照坐标来进行绘制
+
+    var game_timer = ''
+    var game_wrap = document.querySelector(".game")
+    var game_width = game_wrap.clientWidth;
+    var game_height = game_wrap.clientHeight
+    // 创建坦克
+    function Create_tanke(name){
+        var tanke = document.createElement("div")
+        tanke.className = "tanke " + name
+        this.yuansu = tanke
+        this.name = name
+        this.is_die = false
+        this.is_in_game = false
+        this.life = 3
+        this.speed = 20
+        this.direction = "up"
+        this.danjia = []
+        this.is_an = false
+        var tanke1X = (game_width / 2) - (100 / 2) - 100
+        var tanke2X = (game_width / 2) - (100 / 2) + 100
+        this.pos = {
+            x: name == "tanke1" ? (tanke1X) : (tanke2X),
+            y: game_height - 100
+        }
+        this.move = function (fangxian) {
+            if (this.is_an) {
+                if (this.direction == "up") {
+                    this.pos.y -= this.speed 
+                    this.yuansu.style.transform = "rotate(0deg)"
+                } else if (this.direction == "down") {
+                    this.yuansu.style.transform = "rotate(180deg)"
+                    this.pos.y += this.speed
+                } else if (this.direction == "left") {
+                    this.pos.x -= this.speed
+                    this.yuansu.style.transform = "rotate(270deg)"
+                } else if (this.direction == "right") {
+                    this.pos.x += this.speed
+                    this.yuansu.style.transform = "rotate(90deg)"
+                }
+
+                this.yuansu.style.left = this.pos.x + "px"
+                this.yuansu.style.top = this.pos.y + "px"
+                
+            }
+        }
+        this.fire = function () {
+            if (this.is_die) {
+                return
+            }
+            // 造子弹
+            var one_bullete = this.create_bullete()
+            this.danjia.push(one_bullete)
+            
+        }
+        // 造子弹的方法
+        this.create_bullete = function () {
+            var zidan = document.createElement("div")
+            zidan.className = "zidan"
+            game_wrap.appendChild(zidan)
+            zidan.direction = this.direction
+            zidan.name = this.name
+            if (this.direction == "up") {
+                // 上
+                zidan.x = this.pos.x + 100/2 - 4/2
+                zidan.y = this.pos.y - 20
+                zidan.style.transform = "rotate(0deg)"
+            } else if (this.direction == "down") {
+                // 下
+                zidan.x = this.pos.x + 100/2 - 4/2
+                zidan.y = this.pos.y + 100
+                zidan.style.transform = "rotate(180deg)"
+            } else if (this.direction == "left") {
+                // 左
+                zidan.x = this.pos.x - 4
+                zidan.y = this.pos.y + 100/2 - 20/2
+                zidan.style.transform = "rotate(270deg)"
+            } else if (this.direction == "right") {
+                // 右
+                zidan.x = this.pos.x + 100
+                zidan.y = this.pos.y + 100/2 - 20/2
+                zidan.style.transform = "rotate(90deg)"
+            }
+            
+            zidan.speed = 18;
+            zidan.style.left = zidan.x + "px"
+            zidan.style.top = zidan.y + "px"
+            return zidan
+        }
+        // 子弹移动的方法
+        this.bullete_move = function () {
+            for (var i = 0; i < this.danjia.length; i++) {
+                if (this.danjia[i].direction == "up") {
+                    this.danjia[i].style.top = this.danjia[i].offsetTop - this.danjia[i].speed + "px"
+                } else if (this.danjia[i].direction == "down") {
+                    this.danjia[i].style.top = this.danjia[i].offsetTop + this.danjia[i].speed + "px"
+                } else if (this.danjia[i].direction == "left") {
+                    this.danjia[i].style.left = this.danjia[i].offsetLeft - this.danjia[i].speed + "px"
+                } else if (this.danjia[i].direction == "right") {
+                    this.danjia[i].style.left = this.danjia[i].offsetLeft + this.danjia[i].speed + "px"
+                }
+                var x = this.danjia[i].offsetLeft
+                var y = this.danjia[i].offsetTop
+
+                // 判断子弹是否超出屏幕
+                if (y < -20 || y > game_height || x < -4 || x > game_width) {
+                    this.danjia[i].remove()
+                    this.danjia.splice(i , 1)
+                }
+
+                // 判断子弹是否碰到对方
+                var duifang = ""
+                if (this.danjia[i]) {
+                    duifang = this.danjia[i].name == "tanke2" ? tanke1 : tanke2
+                }
+                if (duifang != "") {
+
+                
+                    var die_y = duifang.pos.y
+                    var die_x = duifang.pos.x
+                    var z_x = this.danjia[i].offsetLeft
+                    var z_y = this.danjia[i].offsetTop
+                    
+                    if (duifang.is_die == false) {
+                        if (z_y > die_y - 20 && z_y < die_y + 100 && z_x > die_x - 100 && z_x < die_x + 100) {
+                            this.danjia[i].remove()
+                            duifang.is_die = true
+                            this.danjia.splice(i , 1)
+
+                            duifang.yuansu.remove()
+                        }
+                    }
+                    
+                }
+                
+            }
+        }
+        this.draw = function () {
+            if (this.is_in_game == false) {
+                game_wrap.appendChild(this.yuansu)
+                this.is_in_game = true
+                this.yuansu.style.left = this.pos.x + "px"
+                this.yuansu.style.top = this.pos.y + "px"
+            } 
+        }
+        this.die = function () {
+            this.is_die = true
+            this.life--
+            if (this.life < 0) {
+                console.log("舍命用完...")
+            }
+            this.is_in_game = false
+        }
+    }
+
+    var tanke1 = new Create_tanke("tanke1")
+    var tanke2 = new Create_tanke("tanke2")
+
+    tanke1.draw()
+    tanke2.draw()
+
+
+    document.onkeydown = function () {
+        if (event.key == "w" || event.key == "s" || event.key == "a" || event.key == "d") {
+            tanke1.is_an = true
+            if (event.key == "w") {
+                tanke1.direction = "up"
+            } else if (event.key == "s") {
+                tanke1.direction = "down"
+            } else if (event.key == "a") {
+                tanke1.direction = "left"
+            } else if (event.key == "d") {
+                tanke1.direction = "right"
+            }
+        } else if (event.key == "ArrowUp" || event.key == "ArrowDown" || event.key == "ArrowLeft" || event.key == "ArrowRight") {
+            tanke2.is_an = true
+            if (event.key == "ArrowUp") {
+                tanke2.direction = "up"
+            } else if (event.key == "ArrowDown") {
+                tanke2.direction = "down"
+            } else if (event.key == "ArrowLeft") {
+                tanke2.direction = "left"
+            } else if (event.key == "ArrowRight") {
+                tanke2.direction = "right"
+            }
+        } else if (event.key == "j") {
+            tanke1.fire()
+        } else if (event.key == "0") {
+            tanke2.fire()
+        }
+    }
+    document.onkeyup = function () {
+        if (event.key == "w" || event.key == "s" || event.key == "a" || event.key == "d") {
+            tanke1.is_an = false
+        } else if (event.key == "ArrowUp" || event.key == "ArrowDown" || event.key == "ArrowLeft" || event.key == "ArrowRight") {
+            tanke2.is_an = false
+        }
+    }
+
+    function game_animation() {
+        tanke1.move()
+        tanke2.move()
+
+        // 让子2个坦克的弹移动
+        if (tanke1.danjia.length > 0) {
+            // 让tanke1子弹飞
+            tanke1.bullete_move()
+        }
+        if (tanke2.danjia.length > 0) {
+            // 让tanke2子弹飞
+            tanke2.bullete_move()
+        }
+
+        game_timer = requestAnimationFrame(game_animation)
+    }
+    game_animation()
+
+    
+</script>
+
+</html>

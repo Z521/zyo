@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .game {
+            width: 100%;
+            height: 95vh;
+
+            border: 1px solid black;
+            position: relative;
+        }
+
+        .tanke {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            position: absolute;
+            bottom: 0px;
+            font-size: 30px;
+            color: rgb(255, 255, 255);
+            text-align: center;
+        }
+
+        .tanke1 {
+            background-image: url(http://img5.imgtn.bdimg.com/it/u=3997189961,3202490134&fm=26&gp=0.jpg);
+            left: 45%;
+            background-position: -54px 0;
+            background-size: cover;
+        }
+
+        .tanke2 {
+            background-image: url(http://img1.imgtn.bdimg.com/it/u=4130069942,409728249&fm=26&gp=0.jpg);
+            left: 60%;
+            background-position: -30px 0;
+            background-size: cover;
+         
+        }
+    </style>
+</head>
+
+<body>
+    <div class="game">
+        <!-- <div class="tanke  tanke1"></div>
+        <div class="tanke  tanke2"></div> -->
+
+    </div>
+</body>
+<script>
+    var game_wrap = document.querySelector(".game")
+    var game_width = game_wrap.clientWidth;
+    var game_height = game_wrap.clientHeight
+    //创建坦克
+    // 1. 准备坦克创建的构造函数 Create_tanke()
+    function Create_tanke(name) {
+        // 2. 丰富构造函数
+        var tanke = document.createElement("div")
+        //  2.1 增加名称属性 name
+        tanke.className = "tanke " + name
+        // 2.2.1 给给元素设置 类名 tanke tanke1
+        tanke.innerText = name == "tanke1 " ? "1" : "2"
+        this.yuansu = tanke
+        this.name = name
+        //     2.4 增加是否在屏幕上的状态属性 is_in_game  ---> false
+        this.is_in_game = false
+        var tanke1X = (game_width / 2) - (100 / 2) - 100
+        var tanke2X = (game_width / 2) - (100 / 2) + 100
+        //     2.8 增加位置坐标属性 pos{x:0 , y:0}
+        this.pos = {
+            x: name == "tanke1" ? (tanke1X) : (tanke2X),
+            y: game_height - 100
+        }
+        //     2.11 增加绘制到界面的方法 draw()
+        this.draw = function () {
+            if (this.is_in_game == false) {
+                game_wrap.appendChild(this.yuansu)
+                console.log(this.yuansu);
+                this.is_in_game = this.true
+                this.yuansu.style.left = this.pos.x + "px"
+                this.yuansu.style.top = this.pos.y + "px"
+
+            }
+        }
+    }
+    // 3. 通过坦克构造函数, 创建两个坦克对象(带着名字创建)
+
+    var tanke1 = new Create_tanke("tanke1")
+    var tanke2 = new Create_tanke("tanke2")
+    // 4. 让两个坦克绘制到界面上
+    tanke1.draw()
+    tanke2.draw()
+
+</script>
+
+</html>

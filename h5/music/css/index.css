@@ -1,0 +1,97 @@
+/* 主区域 */
+.wrap{
+    width: 80%;
+    height: 600px;
+    background-color: lightcyan;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+/* 一行音乐 */
+.wrap ul{
+    list-style: none;
+    padding: 0px;
+}
+.row{
+    border: 1px solid red;
+    margin: 18px 0;
+    display: flex;
+    padding: 10px 0px;
+    background: linear-gradient(to right , white , #444);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+}
+.row>div{
+    flex: 1;
+    height: 70px;
+    display: flex;
+}
+
+/* 一行音乐左侧区域 */
+.m_img{
+    width: 60px;
+    height: 60px;
+    border: 5px solid white;
+    border-radius: 50%;
+    margin-left: 20px;
+    /* background-image: url(../sources/image/海阔天空.jpg); */
+    background-size: cover;
+}
+.img_zhuan{
+    animation: zhuan 3s linear 0s infinite;
+}
+@keyframes zhuan{
+    0%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.m_name{
+    /* background-color: purple; */
+    flex: 1;
+    line-height: 70px;
+}
+.m_name>span{
+    margin-left: 20px;
+    font-size: 28px;
+    color: #555;
+}
+
+/* 一行音乐右侧区域 */
+/* .row_r>div{
+    /* flex: 1; */
+    
+/* }  */
+.m_btns{
+    flex: 1;
+    /* background-color: aqua; */
+    text-align: right;
+}
+.m_btns>span{
+    margin-top: 20px;
+    display: inline-block;
+    margin-right: 20px;
+    text-align: center;
+    line-height: 30px;
+    width: 60px;
+    height: 30px;
+    border: 0px solid red;
+    background-color: orange;
+    border-radius: 10px;
+    font-size: 15px;
+    color: white;   
+}
+.m_time{
+    line-height: 70px;
+    text-align: right;
+}
+.m_time>span{
+    margin-right: 20px;
+    font-size: 20px;
+    color: #888;
+}

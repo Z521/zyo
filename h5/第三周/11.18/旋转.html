@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>旋转</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        .box {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            position: relative;
+            top: 200px;
+
+            transform-style: preserve-3d;
+            animation: zhuan 25s linear 0s infinite;
+
+        }
+
+        .box>div {
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .kaui {
+
+            width: 100px;
+            height: 100px;
+            background-size: cover;
+            border: 10px solid transparent;
+            float: left;
+            box-sizing: border-box;
+            border-radius: 30px;
+            background-clip: content-box;
+
+        }
+
+
+        /* body {
+
+            background: radial-gradient(rgb(255, 255, 255), gray, darkgray, black);
+        } */
+
+        .kaui:nth-child(1) {
+            background-image: url(https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=606851399,1937451384&fm=26&gp=0.jpg);
+        }
+
+        .kaui:nth-child(2) {
+            background-image: url(https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1065513352,1798460465&fm=26&gp=0.jpg);
+        }
+
+        .kaui:nth-child(3) {
+            background-image: url(https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1065513352,1798460465&fm=26&gp=0.jpg);
+        }
+
+        .kaui:nth-child(4) {
+            background-image: url(https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2935097882,2209815827&fm=26&gp=0.jpg);
+        }
+
+        .kaui:nth-child(5) {
+            background-image: url(https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3577704484,3323789636&fm=26&gp=0.jpg);
+        }
+
+        .kaui:nth-child(6) {
+            background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3860432938,6279180&fm=26&gp=0.jpg);
+        }
+
+        .kaui:nth-child(7) {
+            background-image: url(https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3682122903,55995478&fm=26&gp=0.jpg);
+        }
+
+        .kaui:nth-child(8) {
+            background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1229024308,1362689700&fm=26&gp=0.jpg);
+        }
+
+        .kaui:nth-child(9) {
+            background-image: url(https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1607581438,3032455597&fm=26&gp=0.jpg);
+        }
+
+
+
+        @keyframes zhuan {
+            0% {
+                transform: rotateY(90deg) rotateX(90deg);
+            }
+
+            50% {
+                transform: rotateY(600deg) rotateX(600deg);
+            }
+
+            100% {
+                transform: rotateY(1200deg) rotateX(1200deg);
+            }
+        }
+
+        .shang {
+            transform: translateY(200px) rotateX(90deg);
+        }
+
+        .xia {
+            transform: translateY(-200px) rotateX(-90deg);
+        }
+        .zuo {
+            transform: translateX(200px) rotateY(90deg);
+        }
+        .you {
+            transform: translateX(-200px) rotateY(-90deg);
+        }
+        .qian {
+            transform: translateZ(200px);
+        }
+        .hou {
+            transform: translateZ(-200px);
+        }
+        .box .qq {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto;
+            background-size: cover;
+        }
+
+        /* background-color: rgb(206, 27, 206); */
+        /* position: absolute; */
+
+        .ss {
+            transform: translateY(150px) rotateX(90deg);
+        }
+        .aa {
+            transform: translateY(-150px) rotateX(-90deg);
+        }
+    .zz {
+            transform: translateX(150px) rotateY(90deg);
+           
+        }
+
+        .xx {
+            transform: translateX(-150px) rotateY(-90deg);
+           
+        }
+
+        .cc {
+            transform: translateZ(150px);
+         
+
+        }
+
+        .vv {
+            transform: translateZ(-150px);
+            
+        }
+        
+        @keyframes zhua {
+            0% {
+                transform: rotateY(90deg) rotateX(90deg);
+            }
+
+            50% {
+                transform: rotateY(600deg) rotateX(600deg);
+            }
+
+            100% {
+                transform: rotateY(1200deg) rotateX(1200deg);
+            }
+            }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+        <div class="shang">
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+        </div>
+        <div class="xia ">
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+        </div>
+        <div class="zuo">
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+        </div>
+        <div class="you">
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+        </div>
+        <div class="qian">
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+        </div>
+        <div class="hou">
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+        </div>
+       
+         <div class="ss">
+                        <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+            <div class="kaui"></div>
+                    </div>
+                    <div class="aa">
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                    </div>
+                    <div class="zz">
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                    </div>
+                    <div class="xx">
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                    </div>
+                    <div class="cc">
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                    </div>
+                    <div class="vv">
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                            <div class="kaui"></div>
+                    </div>
+
+
+
+       
+
+    </div>
+</body>
+</html>

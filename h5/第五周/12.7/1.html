@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  var url = "http://192.168.61.143:3000/search?word=邓紫棋"
+    var xhangqing = "http://192.168.61.143:3000/xhangqing?fileHash="
+
+    
+    function ma(a, b) {
+        var req = new XMLHttpRequest()
+        req.open("GET", a, true)
+        req.send()
+        req.onreadystatechange = function () {
+            if (req.readyState == 4 && req.status == 200) {
+               b(req.responseText)
+
+            }
+        }
+    }
+    ma(url, function (c) {
+        var ss = JSON.parse(c)
+        console.log(ss.data.lists); 
+    })
+</script>
+
+</html>

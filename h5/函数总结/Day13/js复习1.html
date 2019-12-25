@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .da{
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            border: 1px solid black;
+        }
+        .zhong{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            border: 1px solid black;
+        }
+        .xiao{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body style="border: 1px solid red;">
+    <div class="da">
+        <div class="zhong">
+                <div class="xiao"></div>
+        </div>
+    </div>
+</body>
+<script>
+
+
+    // 函数
+    // 函数要想执行, 一定的调用
+    // 函数()---->调用
+    // 函数的结果 一定是 return
+    // return : 两个作用
+    //     1. 返回函数的结果
+    //     2. 提前结束函数
+    // 函数的参数 
+    // 函数定义的时候: 形参 
+    // 函数调用的时候: 实参
+    // 函数的嵌套调用
+    // 函数做为实参-----> 函数的回调
+
+    // var req = new XMLHttpRequest()
+    // var a = 8
+    // var a = new Number(8)
+    // var a = "jalkjsdf"
+    // var a = new String("jaklsdf")
+
+    
+
+    // 构造函数
+    // function person() {
+    //     this.name = ""
+    //     this.age = ""
+    //     this.height = ""
+    //     this.weight = ""
+    //     this.hobby = ""
+    // }
+
+    // function Person() {
+    //     var name = ""
+    //     var age = ""
+    //     var height = ""
+    //     var weight = ""
+    //     var hobby = ""
+    // }
+
+    // var aaa = new sb()
+    // console.log(aaa)
+
+
+    // function xxx() {
+    //     console.log("4444")
+    //     var a = 8
+    //     var b = 9
+    //     var c = a + b
+    //     console.log(c)
+    //     return c
+    // }
+
+    // var bbb = new xxx()
+    // console.log(bbb)
+
+
+
+
+  
+
+
+
+    // function xxx(url , success , error) {
+    //     // 请求----->url
+    //     // success("Jieguo")
+
+    //     error()
+    // }
+
+    // var one = function (a) {
+    //     console.log("成功......" , a)
+    // }
+    // var two = function () {
+    //     console.log('失败.....')
+    // }
+    // xxx("baidu" , one , two)
+    
+
+
+    // function xxx(a , b) {
+    //     console.log(a())
+    //     var aaa = b()
+    //     console.log(aaa)
+    // }
+    // xxx(function () {
+    //     console.log("444444")
+    //     return 8
+    // } , function () {
+    //     console.log("55555")
+    //     return 9
+    // })
+
+
+
+
+
+    // function a () {
+    //     console.log("aaaa")    // ----> aaa
+    // }
+    // function b() {
+    //     console.log(a())    // ----> undefined
+    //     console.log("bbbb")  // ----> bbbb
+    //     return 8
+    // }
+    // function c(){
+    //     console.log(b())   // ----> 8
+    //     console.log("ccc") // -----> cccc
+    // }
+    // function d(){
+    //     console.log("ddd")   // ---> dddd 
+    //     console.log(c())   // ----->undefined
+    // }
+
+    // console.log(d())   // ----> undefined
+
+
+    // function xxx(sb) {
+    //     console.log("11111")
+    //     console.log(sb())
+    //     console.log("22222")
+    // }
+
+    // var a = function () {
+    //     console.log("444444")
+    // }
+
+    // console.log(xxx(a))
+
+    // var a = 8
+    // var b = 7
+    // var c = xxx(a , b)
+    // console.log(c)
+
+    // var bbb = xxx
+    // function xxx() {
+    //     console.log("aaaaa")
+    //     return 7
+    //     console.log("bbbbb")
+
+    // }
+    // console.log(bbb())
+    
+    
+    
+
+    // 点击事件
+    // var da = document.querySelector(".da")
+    // var zhong = document.querySelector(".zhong")
+    // var xiao = document.querySelector(".xiao")
+
+    // da.onclick = function () {
+    //     console.log("hong ......")
+    //     event.stopPropagation()
+    // }
+    // zhong.onclick = function () {
+    //     console.log("zhong ......")
+    //     event.stopPropagation()
+    // }
+    // xiao.onclick = function () {
+    //     console.log("xiao ......")
+    //     event.stopPropagation()
+    // }
+    
+    // useCapture: 是否是用捕获阶段
+    // Propagation: 冒泡 ↑
+    // capture: 捕获 ↓
+
+    // 事件的冒泡和事件的捕获
+    // da.addEventListener("click" , function () {
+    //     console.log("我是大元素的监听函数")
+    // })
+    // zhong.addEventListener("click" , function () {
+    //     console.log("我是中间元素的监听函数")
+    // })
+    // xiao.addEventListener("click" , function () {
+    //     console.log("我是小元素的监听函数")
+    //     event.stopPropagation()
+    // })
+
+
+    // da.addEventListener("click" , function () {
+    //     console.log("666666")
+    // })
+    // da.addEventListener("click" , function () {
+    //     console.log("99999")
+    //     console.log(this)
+    // })
+
+    // da.onclick = function () {
+    //     console.log("66666")
+    // }
+    // da.onclick = function () {
+    //     console.log("99999")
+    // }
+    // da.onclick = null
+
+
+    // 给元素绑定点击事件
+    // 1. 在标签上直接写 onclick="xxx(this)"
+    //     当标签被点击的时候, (window)去执行xxx()
+    //     所以: xxx函数中的this代表window
+    //     function (a) {} 中的a 会代表该标签
+    // 2. 脚本先获取到元素
+    //     给获取到的元素绑定 onclick事件
+    //     让给onclick事件绑定到一个函数中
+    //     所以: 该函数内部的this代表该元素
+    //     只能添加一个监听者函数
+    // 3. 脚本先获取到元素
+    //     元素.addEventListener("click" , function () {
+    //     })
+    //     可以添加多个监听者函数
+
+
+    // 任何一个函数 都会有this
+    // 当一个函数作为元素事件的时候
+    // 该函数内部会多出一个事件对象 event
+
+    // da.onclick = function () {
+    //     console.log(event)
+    //     console.log(this)
+    //     console.log("我是大元素的点击事件....")
+    // }
+
+    // function xxx (a) {
+    //     console.log(event)
+    //     console.log(a)
+    //     console.log(this)
+    //     console.log("我是大元素的点击事件....")
+    // }
+
+    
+
+
+     
+    
+    // function xxx() {
+    //     console.log(this)
+    //     console.log("我是大元素的点击事件....")
+    // }
+
+    // xxx()
+
+    // setTimeout(xxx , 3000)
+
+    // da.onclick = xxx
+
+    
+
+
+    // 由实参到形参的过程: 是一个值拷贝的过程
+    // 数据类型: 基础数据类型 引用类型
+    // 值传递 引用传递
+
+    // var a = [5 , 6 , {name:"zhangsan"}]
+    // function xxx(b) {
+    //     b.name = "lisi"
+    // }
+    // xxx(a[2])
+    // console.log(a)
+
+    // var a = "567.68"
+    // var b = a - 0
+    // var b = Number(a)
+    // var b = parseFloat(a)
+
+    // var a = 678.78
+    // var b = a + ""
+    // var b = a.toString()
+    // var b = String(a)
+
+    // var a = [5 , 6 , 7] 
+    // var a = {name: "zhangsan"}
+    // // var b = a.toString()
+    // // var b = JSON.stringify(a)
+    // // var b = a.join("zhangsan")
+    // // var b = String(a)
+    // console.log(b)
+    // // console.log(c)
+
+
+    // var a = {name: "zhangsan"}
+    // // var b = a.toString()
+    // var b = JSON.stringify(a)
+    // // var b = String(a)
+    // console.log(b)
+    // console.log(c)
+
+    // var a = {
+    //     "name": "zhangsan" , 
+    //     "age": 12,
+    //     "zhangsan":"lisi"
+    // }
+    // for (x in a){
+    //     console.log(x , "----->" , a[x])
+    // }
+    // var jieguo = ""
+    // var kehu = prompt("请输入您要取的内容...")
+    // console.log(a[kehu])
+
+    // a.name  a["name"]
+
+
+
+</script>
+</html>
