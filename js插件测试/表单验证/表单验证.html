@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        #form-box {
+            width: 700px;
+            height: 300px;
+            margin: auto;
+            position: relative;
+            top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="formCheck.html" method="post">
+        <div id="form-box" class="layui-form layui-form-pane">
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="userName" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">密码</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="passWord" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <input type="submit" name="" id="frmSubmit" value="提交"
+                    class="layui-btn layui-btn-primary layui-btn-normal" />
+            </div>
+        </div>
+    </form>
+
+
+</body>
+<script>
+    $(function () {
+        $("form").validate({
+            rules: {
+                userName: {
+                    required: true, //该项表示该字段为必填项
+                    maxlength: 5 //表示该字段的最大长度为5
+                },
+                passWord: {
+                    required: true,
+                    number: true  //表示该字段必须为数字
+                }
+            },
+            messages: {
+                userName: {
+                    required: "*必填",
+                    maxlength: "*最多5个字符"
+                },
+                passWord: {
+                    required: "*必填",
+                    number: "*必须是合法的数字"
+                }
+            }
+        })
+    });
+</script>
+<script src="./js/jquery-3.4.1.min.js"></script>
+
+</html>
